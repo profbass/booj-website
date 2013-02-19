@@ -1,0 +1,339 @@
+body {
+     background: url(/img/bg-squares.gif) repeat 0 0 @white;
+}
+body.scrolling-homepage-layout {
+     background: url(/img/bg-squares.gif) repeat 0 0 @white;
+}
+body.blog-layout {
+     background: url(/img/blog-squares.gif) repeat 0 0 #f0f1f1;
+}
+body.normal-layout {
+     background: @grayDarker;
+     .content-container {
+          background: url(/img/bg-squares.gif) repeat 0 0 @white;
+     }
+}
+
+.content-container {
+     padding-bottom: 100px;
+}
+
+.site-header {
+     position: fixed;
+     top: 0;
+     left: 0;
+     right: 0;
+     background: @red;
+     .box-shadow(0px 4px 8px -2px rgba(0, 0, 0, .65));
+     .navbar {
+          margin: 0;
+          .navbar-inner {
+               margin: 0;
+               padding: 0;
+          }
+          .brand {
+               margin: 26px 17px 20px 0;
+               padding: 0;
+          }
+          .nav > li {
+               margin-top: 30px;
+          }
+          .nav > li > a {
+               font-size: 20px;
+               padding: 8px 17px 16px 17px;
+               text-transform: lowercase;
+          }
+          .nav > li > a > span {
+               padding-bottom: 4px;
+          }
+          .nav > .active > a > span,
+          .nav > li > a:hover > span,
+          .nav > li > a:focus > span {
+               border-bottom: 10px solid @white;
+          }
+     }
+     .header-social-networks {
+          margin-top: 35px;
+          text-align: right;
+          a > i {
+               margin-left: 10px;
+          }
+          a:first-child > i {
+               margin-left: 0;
+          }
+     }
+     .header-contact a {
+          display: block;
+          height:95px;
+          line-height: 95px; 
+          color: @white;
+          font-size: 20px;
+          padding: 0px 25px;
+          text-align: center;
+          text-transform: lowercase;
+          border-left: 1px solid #d00d15;
+          border-right: 1px solid #d00d15;
+     }    
+}
+
+#scrolling-header {
+     bottom: 0;
+     top: auto;
+}
+
+#scrolling-pages {
+     .scrolling-pages-section {
+          width: 100%;
+          padding: 60px 0 40px 0;
+     }
+     p {
+          margin: 0 0 30px 0;
+          font-size: 16px;
+          line-height: 20px;
+     }
+     p.center-text {
+          font-size: 18px;
+          line-height: 26px;
+          padding: 0 40px;
+     }
+     h2 {
+          color: @red;
+          font-size: 100px;
+          line-height: 100px;
+          margin: 0 0 30px 0;
+          font-weight: normal;
+          text-align: center;
+     }
+     #home-section {
+          background-image: url(/img/ninja-home.jpg);
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+          background-color: @red;
+          padding: 0;
+          min-height: 800px;
+     }
+     #about-section {
+          background: @white;
+          .carousel .carousel-control {
+               top: 53%;
+          }
+     }
+     #teams-section {
+          background: #efefef;
+          .teams-block {
+               position: relative;
+               h3 {
+                    position: absolute;
+                    bottom: 0;
+                    padding: 0;
+                    left: 0;
+                    right: 0;
+                    background: @red;
+                    color: @white;
+                    font-size: 24px;
+                    line-height: 24px;
+                    margin: 0;
+                    text-transform: none;
+                    a {
+                         color: @white;
+                         text-decoration: none;
+                         display: block;
+                         padding: 15px;
+                    }
+               }
+               .team-bio {
+                    display: none;
+               }
+          }
+     }
+     #products-section {
+          background: #d2181f;
+          h2 {
+               color: @white;
+               margin-bottom: 65px;
+          }
+          p {
+               color: @white;
+               font-size: 16px;
+               line-height: 24px;
+               margin: 0 0 25px 0;
+          }
+          .btn-white {
+               color: @red;
+          }
+     }
+     #events-section  {
+
+     }
+}
+
+#scrolling-pages .jcarousel-events {
+     position: relative;
+     line-height: 1;
+     .jcarousel {
+         position: relative;
+         overflow: hidden;
+         width: 100%;
+         height: 422px;
+     }
+     ul {
+         width: 20000px;
+         position: absolute;
+         list-style: none;
+         margin: 0;
+         padding: 0;
+     }
+     li {
+         float: left;
+         margin: 0 30px 0 0;
+         padding: 0;
+         width: 370px;
+     }
+     li img {
+
+     }
+     li .carousel-content {
+          background: @white;
+          padding: 15px;
+          height: 152px;
+     }
+     li p {
+          padding: 0;
+          margin: 5px 0 0 0;
+          font-size: 12px;
+          line-height: 18px;
+     }
+     li h4 {
+          background: @white;
+          margin: 0 0 15px 0;
+          font-size: 20px;
+          line-height: 20px;
+          a {
+               text-decoration: none;
+               text-transform: none;
+               color: @red;
+          }
+     }
+     .carousel-next,
+     .carousel-prev {
+          top: 36%;
+          font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+     }
+}
+
+#booj-triangle {
+     margin: 125px 0 25px 0;
+     text-align: center;
+}
+
+#booj-questions-container {
+     position: relative;
+     width: 100%;
+     min-height: 210px;
+     overflow: hidden;
+     .booj-question {
+          width: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          text-align: center;
+          h1 {
+               font-size: 38px;
+               color: @white;
+               line-height: 38px;
+          }
+          p {
+               margin: 5px 0 30px 0;
+               font-size: 24px;
+               line-height: 24px;
+               color: @white;
+          }
+          .btn {
+               color: @red;
+          }
+          .no {
+               margin-left: 10px;
+          }
+          .yes {
+               margin-right: 10px;
+          }
+     }
+}
+
+#scrolling-pages .team-bio-info {
+     border: 1px solid @grayMedium;
+     padding: 20px;
+     margin-bottom: 30px;
+     h2 {
+          font-size: 30px;
+          text-align: left;
+          line-height: 30px;
+          margin:0;
+     }
+     p {
+         margin: 20px 0 0 0;
+         font-size: 16px;
+         line-height: 22px; 
+     }
+}
+
+#scrolling-pages blockquote.home-quote {
+     border:none;
+     color: @red;
+     font-size: 30px;
+     font-family: @robotoFontFamily;
+     font-weight: 300;
+     p {
+          font-size: 30px;
+          margin: 0;
+          line-height: 34px;
+          small {
+               font-size: 20px;
+               line-height: 24px;
+               margin-top: 15px;
+               float: right;
+          }
+     }
+}
+
+ul.contact-address-list {
+     span {
+          display: inline-block;
+          width: 100px;
+     }
+}
+
+#site-footer {
+     width: 100%;
+     background: @grayDarker;
+     .container {
+          position: relative;
+          color: @grayMedDark;
+          font-size: 12px;
+          padding: 60px 0;
+          p {
+               margin: 0;
+               line-height: 16px;
+          }
+          address {
+               display: block;
+               margin: 5px 0;
+          }
+          a {
+              color: @grayMedDark;  
+          }
+     }
+}
+#site-footer-triangle {
+     position: absolute;
+     left: 44%;
+     top: -28px;
+}
+
+.booj-contact-form {
+     label {
+          text-transform: lowercase;
+     }
+}
