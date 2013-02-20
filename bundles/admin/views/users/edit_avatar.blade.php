@@ -10,7 +10,7 @@
 		@include('admin::users.sidenav')
 	</div>
     <div class="span9">
-        <h2>Edit Avatar for <?=$user->first_name; ?> <?=$user->last_name; ?></h2>
+        <h2>Edit Avatar for <?=$user->first_name . ' ' . $user->last_name; ?></h2>
         <hr>
         <?=Form::open_for_files($controller_alias . '/update_avatar/' . $user->id, null, array('class' => 'form-horizontal')); ?>
             <fieldset>
@@ -18,8 +18,8 @@
                 <div class="control-group">
                 	<label class="control-label">Current Avatar</label>
                 	<div class="controls">
-                        <? if (!empty($user->avatar)): ?>
-                            <a href="<?=$user->avatar;?>" target="_blank"><img src="<?=$user->avatar;?>" class="img-polaroid" alt="Avatar" style="max-width:100px;"></a>
+                        <? if (!empty($user->user_metadata->avatar)): ?>
+                            <a href="<?=$user->user_metadata->avatar;?>" target="_blank"><img src="<?=$user->user_metadata->avatar;?>" class="img-polaroid" alt="Avatar" style="max-width:100px;"></a>
                         <? else: ?>
                             No Image Uploaded
                         <? endif; ?>

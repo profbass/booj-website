@@ -64,7 +64,14 @@
 						</div>
 
 						<div class="control-group">
-							<input type="submit" name="Login" value="Login" class="btn btn-primary btn-large">
+                            <div class="row-fluid">
+                                <div class="span6">
+                                    <label class="checkbox"><input type="checkbox" name="remember" value="1"> Remember Me</label>
+                                </div>
+                                <div class="span6">
+                                    <input type="submit" name="Login" value="Login" class="btn btn-primary btn-large pull-right">
+                                </div>
+                            </div>
 						</div>
 
 						<p><a href="/admin/reset">Forgot Password</a></p>

@@ -13,7 +13,7 @@ class Admin_MyAccount_Controller extends Admin_Base_Controller {
 
 	public function get_index()
 	{
-		$this->view_arguments['user'] = Auth::user();
+		$this->view_arguments['user'] = User::get_user_by_id(Auth::user()->id);
 		return View::make('admin::my_account.index', $this->view_arguments);
 	}
 

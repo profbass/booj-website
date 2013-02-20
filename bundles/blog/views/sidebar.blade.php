@@ -36,11 +36,11 @@
 			<? foreach($popular_authors as $author): ?>
 				<li class="clearfix">
 					<? if (!empty($author->avatar_small)): ?>
-						<a class="font-16" href="<?=$action_urls['author'];?>/<?=$author->slug; ?>" title="View profile for <?=$author->first_name; ?> <?=$author->last_name; ?>">
+						<a class="font-16" href="<?=$action_urls['author'];?>/<?=$author->username; ?>" title="View profile for <?=$author->first_name; ?> <?=$author->last_name; ?>">
 							<img class="pull-left" src="<?=$author->avatar_small;?>" alt="Photo of <?=$author->first_name; ?> <?=$author->last_name; ?>">
 						</a>
 					<? endif; ?>
-					<a class="font-16" href="<?=$action_urls['author'];?>/<?=$author->slug; ?>" title="View profile for <?=$author->first_name; ?> <?=$author->last_name; ?>"><?=$author->first_name; ?> <?=$author->last_name; ?></a>
+					<a class="font-16" href="<?=$action_urls['author'];?>/<?=$author->username; ?>" title="View profile for <?=$author->first_name; ?> <?=$author->last_name; ?>"><?=$author->first_name; ?> <?=$author->last_name; ?></a>
 					<? if (!empty($author->title)): ?>
 						<span class="block author-title font-12"><?=$author->title; ?></span>
 					<? endif; ?>

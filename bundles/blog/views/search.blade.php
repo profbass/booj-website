@@ -29,8 +29,8 @@
 					<li>
 						<div class="row-fluid">
 							<div class="span2">
-								<? if (!empty($post->user) && !empty($post->user->avatar)): ?>
-									<img class="gray-border" src="<?=$post->user->avatar; ?>" alt="" class="pull-right">
+								<? if (!empty($post->user) && !empty($post->user->user_metadata->avatar)): ?>
+									<img class="gray-border" src="<?=$post->user->user_metadata->avatar; ?>" alt="" class="pull-right">
 								<? endif; ?>
 							</div>
 							<div class="span10">

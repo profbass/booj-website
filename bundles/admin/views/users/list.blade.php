@@ -18,6 +18,7 @@
      			<thead>
      				<tr>
      					<th>Name</th>
+     					<th>Username</th>
      					<th>Email</th>
      					<th>Status</th>
      					<th class="align-right">Actions</th>
@@ -27,6 +28,7 @@
 		     		<?php foreach($users as $user): ?>
 		     			<tr>
 		     				<td><?=$user->first_name;?> <?=$user->last_name;?></td>
+		     				<td><?=$user->username;?></td>
 		     				<td><?=$user->email;?></td>
 		     				<td>
 		     					<?php

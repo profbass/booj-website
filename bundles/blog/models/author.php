@@ -12,8 +12,9 @@ class Author extends Eloquent {
 	public static function get_most_popular($number_authors = 1)
 	{
 		$query = DB::table('posts')
-			->select(array('user_id', DB::raw('count(*) AS number_posts'), 'users.*'))
+			->select(array('posts.user_id', DB::raw('count(*) AS number_posts'), 'users.*', 'users_metadata.avatar_small', 'users_metadata.title', 'users_metadata.twitter_handle'))
 			->join('users', 'users.id', '=', 'posts.user_id')
+			->join('users_metadata', 'users_metadata.user_id', '=', 'posts.user_id')
 			->group_by('user_id')
 			->order_by('number_posts', 'DESC')
 			->take($number_authors)
@@ -37,7 +38,7 @@ class Author extends Eloquent {
 		foreach ($query as $v) {
 			$user_ids[] = $v->user_id;
 		}
-		$users = User::where_in('id', $user_ids)->order_by('last_name', 'ASC')->get();
+		$users = User::with('user_metadata')->where_in('id', $user_ids)->order_by('last_name', 'ASC')->get();
 		if ($users) {
 			return $users;
 		}
@@ -48,7 +49,7 @@ class Author extends Eloquent {
 	public static function get_author_by_slug($slug = FALSE, $num_posts = 4)
 	{
 		if ($slug) {
-			$user = User::where('slug', '=', $slug)->first();
+			$user = User::with('user_metadata')->where('username', '=', $slug)->first();
 			if ($user) {
 				return array(
 					'author' => $user,

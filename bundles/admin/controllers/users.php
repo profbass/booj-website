@@ -13,7 +13,7 @@ class Admin_Users_Controller extends Admin_Base_Controller {
 
 	public function get_index()
 	{
-		$this->view_arguments['users'] = Auth::user()->all();
+		$this->view_arguments['users'] = User::get_users();;
 		return View::make('admin::users.list', $this->view_arguments);
 	}
 
@@ -57,10 +57,10 @@ class Admin_Users_Controller extends Admin_Base_Controller {
 		$input = Input::all();
 		
 		$rules = array(
+			'username' => 'required|unique:users,username,' . $id,
+			'email' => 'required|email|unique:users,email,' . $id,
 			'first_name' => 'required',
 			'last_name' => 'required',
-			'slug' => 'required|unique:users,slug,' . $id,
-			'email' => 'required|email|unique:users,email,' . $id,
 		);
 
 		$validation = Validator::make($input, $rules);
@@ -127,10 +127,10 @@ class Admin_Users_Controller extends Admin_Base_Controller {
 		$input = Input::all();
 		
 		$rules = array(
+			'username' => 'required|unique:users',
+			'email' => 'required|email|unique:users',
 			'first_name' => 'required',
 			'last_name' => 'required',
-			'slug' => 'required|unique:users',
-			'email' => 'required|email|unique:users',
 		);
 
 		$validation = Validator::make($input, $rules);

@@ -14,46 +14,49 @@
     	<hr>
     	<table class="table table-striped">
     		<tbody>
-    			<tr>
-    				<td>Name</td>
-    				<td><?=$user->first_name;?> <?=$user->last_name; ?></td>
-    			</tr>
-    			<tr>
-    				<td>Title</td>
-    				<td><?=$user->title;?></td>
-    			</tr>	
+                <tr>
+                    <td>First Name</td>
+                    <td><?=$user->first_name; ?></td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td><?=$user->last_name; ?></td>
+                </tr>
+                <tr>
+                    <td>Username</td>
+                    <td><?=$user->username; ?></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><?=$user->email;?></td>
+                </tr> 
 
-    			<tr>
-    				<td>Email</td>
-    				<td><?=$user->email;?></td>
-    			</tr>	
-    			<tr>
-    				<td>Twitter Handle</td>
-    				<td><?=$user->twitter_handle;?></td>
-    			</tr>
-                <tr>
-                    <td>Facebook Id</td>
-                    <td><?=$user->facebook_id;?></td>
-                </tr>
-                <tr>
-                    <td>Google Plus Id</td>
-                    <td><?=$user->google_plus_id;?></td>
-                </tr>
-    			<tr>
-    				<td>Bio</td>
-    				<td><?=$user->bio;?></td>
-    			</tr>	
-    			<tr>
-    				<td>Avatar</td>
-    				<td>
-                        <? if (!empty($user->avatar)): ?>
-                            <a href="<?=$user->avatar;?>" target="_blank"><img src="<?=$user->avatar;?>" class="img-polaroid" alt="Avatar" style="max-width:100px;"></a>
-                        <? else: ?>
-                            No Image Uploaded
-                        <? endif; ?>
-                        <a href="<?=$admin_alias;?>/users/edit_avatar/<?=$user->id;?>">Change/Upload Avatar</a>
-                    </td>
-    			</tr>	
+                <?
+                if (!empty($user->user_metadata->attributes)):
+                    foreach($user->user_metadata->attributes as $meta_name => $meta_value): 
+                ?>
+                        <? if(!in_array($meta_name, array('id', 'user_id', 'avatar', 'avatar_small'))): ?>
+                        <tr>
+                            <td><?=ucwords(str_replace('_', ' ', $meta_name));?></td>
+                            <td><?=$meta_value;?></td>
+                        </tr>
+                        <? elseif(in_array($meta_name, array('avatar'))): ?>
+                            <tr>
+                                <td>Avatar</td>
+                                <td>
+                                    <? if (!empty($meta_value)): ?>
+                                        <a href="<?=$meta_value;?>" target="_blank"><img src="<?=$meta_value;?>" class="img-polaroid" alt="Avatar" style="max-width:100px;"></a>
+                                    <? else: ?>
+                                        No Image Uploaded
+                                    <? endif; ?>
+                                    <a href="<?=$admin_alias;?>/users/edit_avatar/<?=$user->id;?>">Change/Upload Avatar</a>
+                                </td>
+                            </tr>   
+                <?
+                        endif;
+                    endforeach;
+                endif;
+                ?>
     		</tbody>
     	</table>
     	<a href="<?=$admin_alias;?>/users/edit/<?=$user->id;?>" class="btn btn-primary">Edit This Info</a>

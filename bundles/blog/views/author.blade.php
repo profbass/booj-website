@@ -28,15 +28,15 @@
 		</div>
 		@if (!empty($data['author']))
 			<div class="author-bio-section margin-bottom-30">
-				<img class="author-bio-img" src="<?=$data['author']->avatar;?>" alt="photo of <?=$data['author']->first_name; ?> <?=$data['author']->last_name; ?>">
-				<span class="block author-bio-title"><?=$data['author']->title; ?></span>
+				<img class="author-bio-img" src="<?=$data['author']->user_metadata->avatar;?>" alt="photo of <?=$data['author']->first_name; ?> <?=$data['author']->last_name; ?>">
+				<span class="block author-bio-title"><?=$data['author']->user_metadata->title; ?></span>
 				<span class="block">
-					<? if (!empty($data['author']->facebook_id)) echo '<a href="' . $action_urls['facebook'] . $data['author']->facebook_id . '" rel="nofollow" target="_blank" title="My Facebook Page"><i class="bicon-red-facebook">Facebook</i></a>'; ?>
-					<? if (!empty($data['author']->google_plus_id)) echo '<a href="' . $action_urls['google_plus'] . $data['author']->google_plus_id . '" rel="nofollow" target="_blank" title="My Google Plus Page"><i class="bicon-red-google-plus">Google Plus</i></a>'; ?>
-					<? if (!empty($data['author']->twitter_handle)) echo '<a href="' . $action_urls['twitter'] . $data['author']->twitter_handle . '" rel="nofollow" target="_blank" title="My Twitter Page"><i class="bicon-red-twitter">Twitter</i></a>'; ?>
+					<? if (!empty($data['author']->user_metadata->facebook_id)) echo '<a href="' . $action_urls['facebook'] . $data['author']->user_metadata->facebook_id . '" rel="nofollow" target="_blank" title="My Facebook Page"><i class="bicon-red-facebook">Facebook</i></a>'; ?>
+					<? if (!empty($data['author']->user_metadata->google_plus_id)) echo '<a href="' . $action_urls['google_plus'] . $data['author']->user_metadata->google_plus_id . '" rel="nofollow" target="_blank" title="My Google Plus Page"><i class="bicon-red-google-plus">Google Plus</i></a>'; ?>
+					<? if (!empty($data['author']->user_metadata->twitter_handle)) echo '<a href="' . $action_urls['twitter'] . $data['author']->user_metadata->twitter_handle . '" rel="nofollow" target="_blank" title="My Twitter Page"><i class="bicon-red-twitter">Twitter</i></a>'; ?>
 				</span>
 				<span class="block author-bio-spacer">&nbsp;</span>
-				<?=$data['author']->bio;?>
+				<?=$data['author']->user_metadata->bio;?>
 			</div>
 
 			@if (!empty($data['posts']->results))
@@ -59,7 +59,7 @@
 									<p class="post-landing-author">
 										<?=date('F jS, Y', strtotime($post->created_at));?>
 										<? if (!empty($post->user)): ?>
-											 // by <a href="<?=$action_urls['author'];?>/<?=$post->user->slug;?>" title="View profile for <?=$post->user->first_name;?> <?=$post->user->last_name;?>">+ <?=$post->user->first_name;?> <?=$post->user->last_name;?></a>
+											 // by <a href="<?=$action_urls['author'];?>/<?=$post->user->username;?>" title="View profile for <?=$post->user->first_name;?> <?=$post->user->last_name;?>">+ <?=$post->user->first_name;?> <?=$post->user->last_name;?></a>
 										<? endif; ?>
 									</p>
 									<p class="post-landing-content"><?=$post->truncated_content();?></p>

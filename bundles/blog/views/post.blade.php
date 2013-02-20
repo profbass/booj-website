@@ -62,7 +62,7 @@
 						<div class="post-top-meta">
 							<? echo date('n/j/Y', strtotime($data['post']->created_at)); ?>
 							<? if (!empty($data['post']->user)): ?>
-								 // by <a href="<?=$action_urls['author'];?>/<?=$data['post']->user->slug;?>" title="View profile for <?=$data['post']->user->first_name;?> <?=$data['post']->user->last_name;?>">+<?=$data['post']->user->first_name;?> <?=$data['post']->user->last_name;?></a>
+								 // by <a href="<?=$action_urls['author'];?>/<?=$data['post']->user->username;?>" title="View profile for <?=$data['post']->user->first_name;?> <?=$data['post']->user->last_name;?>">+<?=$data['post']->user->first_name;?> <?=$data['post']->user->last_name;?></a>
 							<? endif; ?>
 						</div>
 
@@ -89,17 +89,17 @@
 
 			@if (!empty($data['post']->user))
 				<div class="post-author-section shadow-box white-box margin-bottom-30">
-					<a href="<?=$action_urls['author'];?>/<?=$data['post']->user->slug;?>" title="View profile for <?=$data['post']->user->first_name; ?> <?=$data['post']->user->last_name; ?>">
-							<img class="post-author-img" src="<?=$data['post']->user->avatar;?>" alt="photo of <?=$data['post']->user->first_name; ?> <?=$data['post']->user->last_name; ?>">
+					<a href="<?=$action_urls['author'];?>/<?=$data['post']->user->username;?>" title="View profile for <?=$data['post']->user->first_name; ?> <?=$data['post']->user->last_name; ?>">
+							<img class="post-author-img" src="<?=$data['post']->user->user_metadata->avatar;?>" alt="photo of <?=$data['post']->user->first_name; ?> <?=$data['post']->user->last_name; ?>">
 						</a>
 					<h2 class="font-30">
-						<a href="<?=$action_urls['author'];?>/<?=$data['post']->user->slug;?>" class="caps" title="View profile for <?=$data['post']->user->first_name; ?> <?=$data['post']->user->last_name; ?>"><?=$data['post']->user->first_name; ?> <?=$data['post']->user->last_name; ?></a>
-						<? if (!empty($data['post']->user->facebook_id)) echo '<a href="' . $action_urls['facebook'] . $data['post']->user->facebook_id . '" rel="nofollow" target="_blank" title="My Facebook Page"><i class="bicon-red-facebook margin-top-5">Facebook</i></a>'; ?>
-						<? if (!empty($data['post']->user->google_plus_id)) echo '<a href="' . $action_urls['google_plus'] . $data['post']->user->google_plus_id . '" rel="nofollow" target="_blank" title="My Google Plus Page"><i class="bicon-red-google-plus margin-top-5">Google Plus</i></a>'; ?>
-						<? if (!empty($data['post']->user->twitter_handle)) echo '<a href="' . $action_urls['twitter'] . $data['post']->user->twitter_handle . '" rel="nofollow" target="_blank" title="My Twitter Page"><i class="bicon-red-twitter margin-top-5">Twitter</i></a>'; ?>
+						<a href="<?=$action_urls['author'];?>/<?=$data['post']->user->username;?>" class="caps" title="View profile for <?=$data['post']->user->first_name; ?> <?=$data['post']->user->last_name; ?>"><?=$data['post']->user->first_name; ?> <?=$data['post']->user->last_name; ?></a>
+						<? if (!empty($data['post']->user->user_metadata->facebook_id)) echo '<a href="' . $action_urls['facebook'] . $data['post']->user->user_metadata->facebook_id . '" rel="nofollow" target="_blank" title="My Facebook Page"><i class="bicon-red-facebook margin-top-5">Facebook</i></a>'; ?>
+						<? if (!empty($data['post']->user->user_metadata->google_plus_id)) echo '<a href="' . $action_urls['google_plus'] . $data['post']->user->user_metadata->google_plus_id . '" rel="nofollow" target="_blank" title="My Google Plus Page"><i class="bicon-red-google-plus margin-top-5">Google Plus</i></a>'; ?>
+						<? if (!empty($data['post']->user->user_metadata->twitter_handle)) echo '<a href="' . $action_urls['twitter'] . $data['post']->user->user_metadata->twitter_handle . '" rel="nofollow" target="_blank" title="My Twitter Page"><i class="bicon-red-twitter margin-top-5">Twitter</i></a>'; ?>
 					</h2>
 					<span class="block author-title"><?=$data['post']->user->title; ?></span>
-					<p><?=$data['post']->user->bio;?></p>
+					<p><?=$data['post']->user->user_metadata->bio;?></p>
 				</div>
 			@endif
 			@if (!empty($data['similar_posts']))
