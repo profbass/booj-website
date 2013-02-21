@@ -47,9 +47,12 @@ class Admin_Install {
 		});
 
 		// Create users group relation table
-		Schema::create('users_groups', function($table) {
+		Schema::create('group_user', function($table) {
+			$table->increments('id')->unsigned();
 			$table->integer('user_id')->unsigned();
 			$table->integer('group_id')->unsigned();
+			$table->date('created_at')->nullable()->default('0000-00-00 00:00:00');
+			$table->date('updated_at')->nullable()->default('0000-00-00 00:00:00');
 		});
 	}
 
@@ -67,6 +70,6 @@ class Admin_Install {
 
 		Schema::drop('groups');
 
-		Schema::drop('users_groups');
+		Schema::drop('group_user');
 	}
 }

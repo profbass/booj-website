@@ -7,6 +7,7 @@ use \Laravel\Input as Input;
 use \Laravel\File as File;
 use \Laravel\Config as Config;
 use Resizer as Resizer;
+use \Laravel\Cache as Cache;
 
 class Post extends Eloquent {
 	public static $timestamps = true;
@@ -46,6 +47,9 @@ class Post extends Eloquent {
 				$post->delete();
 
 				$build = Blogrss::build_feed();
+
+				// kill caches
+				Cache::forget('blog_post_most_popular');
 				
 				return TRUE;
 			}
@@ -104,6 +108,11 @@ class Post extends Eloquent {
 					}
 				}
 
+				// kill caches
+				Cache::forget('blog_post_slug_' . $post->slug);
+				Cache::forget('blog_post_most_popular');
+
+				// build rss
 				$build = Blogrss::build_feed();
 
 				return TRUE;
@@ -152,6 +161,14 @@ class Post extends Eloquent {
 					default:
 						break;
 				}
+
+				// kill caches
+				Cache::forget('blog_post_slug_' . $post->slug);
+				Cache::forget('blog_post_most_popular');
+
+				// build rss
+				$build = Blogrss::build_feed();
+
 				return TRUE;
 			}
 		}
@@ -209,6 +226,7 @@ class Post extends Eloquent {
 				->save( $resize_file , 100 )
 			;			
 
+			// build rss
 			$build = Blogrss::build_feed();
 
 			return TRUE;
@@ -218,6 +236,14 @@ class Post extends Eloquent {
 
 	public static function get_post_from_uri($slug) 
 	{
+		$key = 'blog_post_slug_' . $slug;
+
+		if (Cache::has($key)) {
+			return Cache::get($key);
+		}
+
+		$data = FALSE;
+
 		$post = Post::with(array('category', 'tags', 'user'))->where('slug', '=', $slug)->first();
 		
 		if ($post) {
@@ -255,23 +281,33 @@ class Post extends Eloquent {
 			;
 
 			if ($post) {
-				return array(
+				$data = array(
 					'post' => $post,
 					'similar_posts' => $similar,
 					'next_post' => !empty($next) ? $next[0] : FALSE,
 					'previous_post' => !empty($previous) ? $previous[0] : FALSE,
 					'random_post' => !empty($random) ? $random[0] : FALSE,
 				);
+
+				Cache::put($key, $data, 120);
 			}
 		}
 
-		return FALSE;
+		return $data;
 	}
 
 	public static function get_most_popular_posts($count = 3)
 	{
+		$key = 'blog_post_most_popular';
+
+		if (Cache::has($key)) {
+			return Cache::get($key);
+		}
+
 		$post = Post::where('is_published', '=', 1)->order_by('viewed_at', 'DESC')->order_by('number_views', 'DESC')->take($count)->get();
+		
 		if ($post) {
+			Cache::put($key, $post, 120);
 			return $post;
 		}
 		return FALSE;

@@ -1,25 +1,31 @@
 <?php
 
 use Admin\Models\User as User;
+use Admin\Models\Group as Group;
 use \Laravel\Config as Config;
 
 class Admin_Users_Controller extends Admin_Base_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+
+		// only grant access to people in these groups
+		$this->filter('before', 'user_in_group', array(array('Administrator', 'Super Administrator')));
+
         $this->controller_alias = $this->admin_alias . '/users';
         $this->view_arguments['controller_alias'] = $this->controller_alias;
 	}
 
 	public function get_index()
 	{
-		$this->view_arguments['users'] = User::get_users();;
+		$this->view_arguments['users'] = User::get_users();
 		return View::make('admin::users.list', $this->view_arguments);
 	}
 
 	public function get_edit($id = FALSE)
 	{
 		$this->view_arguments['user'] = User::get_user_by_id($id);
+		$this->view_arguments['groups'] = Group::all();
 		return View::make('admin::users.edit_user', $this->view_arguments);
 	}
 
@@ -61,6 +67,7 @@ class Admin_Users_Controller extends Admin_Base_Controller {
 			'email' => 'required|email|unique:users,email,' . $id,
 			'first_name' => 'required',
 			'last_name' => 'required',
+			'groups' => 'required',
 		);
 
 		$validation = Validator::make($input, $rules);
@@ -79,6 +86,7 @@ class Admin_Users_Controller extends Admin_Base_Controller {
 
 	public function get_create()
 	{
+		$this->view_arguments['groups'] = Group::all();
 		return View::make('admin::users.create', $this->view_arguments);
 	}
 
@@ -131,6 +139,7 @@ class Admin_Users_Controller extends Admin_Base_Controller {
 			'email' => 'required|email|unique:users',
 			'first_name' => 'required',
 			'last_name' => 'required',
+			'groups' => 'required',
 		);
 
 		$validation = Validator::make($input, $rules);

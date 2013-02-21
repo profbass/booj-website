@@ -4,6 +4,7 @@ namespace Admin\Models;
 use \Laravel\Database\Eloquent\Model as Eloquent;
 use \Laravel\Database as DB;
 use \Laravel\Hash as Hash;
+use \Laravel\Auth as Auth;
 use \Laravel\Config as Config;
 use \Laravel\Input as Input;
 use \Laravel\File as File;
@@ -26,15 +27,31 @@ class User extends Eloquent {
 		return $p;
 	}
 
+	public static function in_group($group = FALSE)
+	{
+		$user = User::with(array('groups'))->find(Auth::user()->id);
+		if (!is_array($group)) {
+			$group = array($group);
+		}
+
+		foreach ($user->groups as $usergroup) {
+			if (in_array($usergroup->name, $group)) {
+				return TRUE;
+			}
+		}
+
+		return FALSE;
+	}
+
 	public static function get_users()
 	{
-		return User::with('user_metadata')->order_by('last_name', 'asc')->get();
+		return User::with(array('user_metadata', 'groups'))->order_by('last_name', 'asc')->get();
 	}	
 
 	public static function get_user_by_id($id = FALSE)
 	{
 		if ($id) {
-			$user = User::with('user_metadata')->find($id);
+			$user = User::with(array('user_metadata', 'groups'))->find($id);
 			if ($user) {
 				return $user;
 			}
@@ -146,6 +163,17 @@ class User extends Eloquent {
 			$meta->user_id = $user->id;
 			$meta->save();
 
+			if (!empty($args['groups'])) {
+				foreach ($args['groups'] as $group) {
+					if (!empty($group)) {
+						$usergroup = new GroupUser();
+						$usergroup->user_id = $user->id;
+						$usergroup->group_id = $group;
+						$usergroup->save();
+					}
+				}
+			}
+
 			return $user->id;
 		}
 		return FALSE;
@@ -172,6 +200,34 @@ class User extends Eloquent {
 					}
 				}
 
+				$groups = $user->groups;
+
+				if (!empty($groups)) {
+					foreach ($groups as $group) {
+						$key = array_search($group->id, $args['groups']);
+						if ($key === FALSE) {
+							DB::table('group_user')
+								->where('user_id', '=', $user->id)
+								->where('group_id', '=', $group->id)
+								->delete()
+							;
+						} else {
+							unset($args['groups'][$key]);
+						}
+					}
+				}
+
+				if (!empty($args['groups'])) {
+					foreach ($args['groups'] as $group) {
+						if (!empty($group)) {
+							$usergroup = new GroupUser();
+							$usergroup->user_id = $user->id;
+							$usergroup->group_id = $group;
+							$usergroup->save();
+						}
+					}
+				}
+
 				return TRUE;
 			}
 		}
@@ -182,4 +238,9 @@ class User extends Eloquent {
 	{
 	  return $this->has_one('Admin\Models\UserMetadata');
 	}	
+
+	public function groups()
+	{
+	  return $this->has_many_and_belongs_to('Admin\Models\Group');
+	}
 }

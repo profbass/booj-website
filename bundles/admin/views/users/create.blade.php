@@ -75,6 +75,24 @@
 					</div>
 				</div>
 
+                <div class="control-group{{ isset($errors) && $errors->has('groups[]') ? ' error' : '' }}">
+                    <?php echo Form::label('groups[]', 'User Group *', array('class' => 'control-label')); ?>
+                    <div class="controls">
+                        <?
+                        $select_options = array('' => 'Choose User Groups');
+                        if(!empty($groups)) {
+                            foreach($groups as $obj) {
+                                $select_options[$obj->id] = $obj->name;
+                            }
+                        }
+                        echo Form::select('groups[]', $select_options, Input::old('groups'), array('style' => 'height:200px;', 'class' => 'span6', 'required' => 'required', 'multiple' => 'multiple'));
+                        ?>
+                        @if ($errors && $errors->has('groups[]'))
+                            <span class="help-inline">This field is required</span>
+                        @endif
+                    </div>
+                </div>
+
 				<div class="form-actions">
 					<button type="submit" name="submit" value="1" class="btn btn-success">Create User</button>
 				</div>

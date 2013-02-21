@@ -21,6 +21,7 @@
      					<th>Username</th>
      					<th>Email</th>
      					<th>Status</th>
+     					<th>Groups</th>
      					<th class="align-right">Actions</th>
      				</tr>
      			</thead>
@@ -42,10 +43,17 @@
 		     					?>
 		     				</td>
 		     				<td>
+		     					<? if (!empty($user->groups)) {
+		     							foreach($user->groups as $group) {
+		     								echo $group->name . "<br>";
+		     							}
+		     						}
+		     					?>
+		     				</td>
+		     				<td>
 								<div class="btn-toolbar">
 									<div class="btn-group">
 				     					<a href="<?=$controller_alias;?>/edit/<?=$user->id;?>" class="btn btn-mini"><i class="icon-edit"></i> Edit Info</a>
-				     					<a href="<?=$controller_alias;?>/edit_avatar/<?=$user->id;?>" class="btn btn-mini"><i class="icon-user"></i> Edit Avatar</a>
 				     					<?
 				     					if ($user->status == 1):
 				     						echo '<a href="' . $controller_alias . '/lock/' . $user->id .'" class="btn btn-warning btn-mini" data-action="confirm"><i class="icon-lock icon-white"></i> Lock</a>';

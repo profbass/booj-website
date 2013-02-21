@@ -20,6 +20,12 @@ Route::filter('admin_auth', function() {
 	}
 });
 
+Route::filter('user_in_group', function($args = array()) {
+	if (!Admin\Models\User::in_group($args)) {
+		return Redirect::to(URL::to_action('admin::home@index'))->with('error_message', 'You do not have permission for this area.');
+	}
+});
+
 Route::filter('admin_csrf', function() {
 
 });

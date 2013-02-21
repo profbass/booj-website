@@ -7,7 +7,7 @@
 @section('content')	
 <div class="row-fluid">
     <div class="span3">
-        &nbsp;
+        @include('admin::my_account.sidenav')
     </div>
     <div class="span9">
     	<h2>My Account</h2>
@@ -31,6 +31,19 @@
                     <td><?=$user->email;?></td>
                 </tr> 
 
+                <? if (!empty($user->groups)): ?>
+                <tr>
+                    <td>Groups</td>
+                    <td>
+                        <?
+                        foreach($user->groups as $group) {
+                            echo $group->name . "<br>";
+                        }
+                        ?>
+                    </td>
+                </tr>
+                <? endif; ?>
+
                 <?
                 if (!empty($user->user_metadata->attributes)):
                     foreach($user->user_metadata->attributes as $meta_name => $meta_value): 
@@ -49,7 +62,7 @@
                                     <? else: ?>
                                         No Image Uploaded
                                     <? endif; ?>
-                                    <a href="<?=$admin_alias;?>/users/edit_avatar/<?=$user->id;?>">Change/Upload Avatar</a>
+                                   <a href="<?=$controller_alias;?>/edit_avatar">Change/Upload Avatar</a>
                                 </td>
                             </tr>   
                 <?
@@ -59,12 +72,12 @@
                 ?>
     		</tbody>
     	</table>
-    	<a href="<?=$admin_alias;?>/users/edit/<?=$user->id;?>" class="btn btn-primary">Edit This Info</a>
+    	<a href="<?=$controller_alias;?>/edit" class="btn btn-primary">Edit This Info</a>
 
     	<hr>
     	<h3>Change Password</h3>
 
-		<?php echo Form::open($controller_alias . '/change_password/' . $user->id, null, array('class' => 'form-horizontal') ); ?>
+		<?php echo Form::open($controller_alias . '/change_password', null, array('class' => 'form-horizontal') ); ?>
 			<fieldset>
 
 				<div class="control-group{{ isset($errors) && $errors->has('password') ? ' error' : '' }}">

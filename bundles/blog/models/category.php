@@ -4,6 +4,7 @@ namespace Blog\Models;
 use \Laravel\Database\Eloquent\Model as Eloquent;
 use \Laravel\Database as DB;
 use \Laravel\Config as Config;
+use \Laravel\Cache as Cache;
 
 class Category extends Eloquent {
 	public static $timestamps = true;
@@ -17,7 +18,15 @@ class Category extends Eloquent {
 
 	public static function get_categories()
 	{
+		$key = 'blog_categories';
+
+		if (Cache::has($key)) {
+			return Cache::get($key);
+		}
+
 		$categories = Category::order_by('title', 'ASC')->get();
+
+		Cache::put($key, $categories, 120);
 
 		return $categories;
 	}
@@ -35,6 +44,9 @@ class Category extends Eloquent {
 				$category->delete();
 
 				$build = Blogrss::build_feed();
+
+				// kill caches
+				Cache::forget('blog_categories');
 
 				return TRUE;
 			}
@@ -61,6 +73,12 @@ class Category extends Eloquent {
 				$category->title = $data['title'];
 				$category->slug = $category->make_slug($data['slug']);
 				$category->save();
+
+				// kill caches
+				Cache::forget('blog_category_slug_' . $category->slug);
+				Cache::forget('blog_category_id_posts_' . $category->id);
+				Cache::forget('blog_categories');
+
 				return TRUE;
 			}
 		}
@@ -74,6 +92,10 @@ class Category extends Eloquent {
 			$category->title = $data['title'];
 			$category->slug = $category->make_slug($data['slug']);
 			$category->save();
+
+			// kill caches
+			Cache::forget('blog_categories');
+
 			return TRUE;
 		}
 		return FALSE;
@@ -81,43 +103,68 @@ class Category extends Eloquent {
 
 	public static function get_category_by_slug($slug = FALSE)
 	{
+		$key = 'blog_category_slug_' . $slug;
+
+		if (Cache::has($key)) {
+			return Cache::get($key);
+		}
+
 		$category = array();	
+		
 		if ($slug) {
 			$category = Category::where('slug', '=', $slug)->first();
 		}
+
 		if (empty($category)) {
 			$category = FALSE;
 		}
+
+		Cache::put($key, $category, 120);
+
 		return $category;
 	}
 
 	public static function get_posts_in_category_by_slug($slug = FALSE) 
 	{
+		$data = FALSE;
+
 		if ($slug) {
 			$category = Category::get_category_by_slug($slug);
 			if ($category) {
 				$posts = $category->posts()->where('is_published', '=', 1)->order_by('created_at', 'DESC')->paginate(Config::get('Blog::blog.paging_count'));
-				return array(
+				$data = array(
 					'category' => $category,
 					'posts' => $posts,
 				);
 			}
 		}
-		return FALSE;
+
+		return $data;
 	}
 
 	public static function get_posts_in_category_by_id($id = FALSE) 
 	{
 		if ($id) {
+			$key = 'blog_category_id_posts_' . $slug;
+
+			if (Cache::has($key)) {
+				return Cache::get($key);
+			}
+
 			$category = Category::find($id)->get();
 			if ($category) {
 				$posts = $category->posts()->where('is_published', '=', 1)->order_by('created_at', 'DESC')->get();
-				return array(
+				$data = array(
 					'category' => $category,
 					'posts' => $posts,
 				);
+
+				Cache::put($key, $data, 120);
+
+				return $data;
 			}
 		}
+
 		return FALSE;
 	}
 

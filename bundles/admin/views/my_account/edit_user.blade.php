@@ -11,12 +11,12 @@
 @section('content')	
 <div class="row-fluid">
 	<div class="span3">
-		@include('admin::users.sidenav')
+		@include('admin::my_account.sidenav')
 	</div>
     <div class="span9">
-    	<h2>Edit Account for <?=$user->first_name . ' ' . $user->last_name; ?></h2>
+    	<h2>Edit My Account</h2>
     	<hr>
-		<?php echo Form::open($controller_alias . '/update/' . $user->id, null, array('class' => 'form-horizontal') ); ?>
+		<?php echo Form::open($controller_alias . '/update', null, array('class' => 'form-horizontal') ); ?>
 			<fieldset>	
 						
 				<div class="control-group{{ isset($errors) && $errors->has('first_name') ? ' error' : '' }}">
@@ -61,7 +61,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="control-group{{ isset($errors) && $errors->has('email') ? ' error' : '' }}">
 					<div class="control-group">
 						<?php echo Form::label('email', 'Email *', array('class' => 'control-label')); ?>
@@ -75,30 +75,6 @@
 						</div>
 					</div>
 				</div>
-
-                <div class="control-group{{ isset($errors) && $errors->has('groups[]') ? ' error' : '' }}">
-                    <?php echo Form::label('groups[]', 'User Group *', array('class' => 'control-label')); ?>
-                    <div class="controls">
-                        <?
-                        $old_values = array();
-                        if (!empty($user->groups)) {
-                        	foreach ($user->groups as $t) {
-                        		$old_values[] = $t->id;
-                        	};
-                        }
-                        $select_options = array('' => 'Choose User Groups');
-                        if(!empty($groups)) {
-                            foreach($groups as $obj) {
-                                $select_options[$obj->id] = $obj->name;
-                            }
-                        }
-                        echo Form::select('groups[]', $select_options, Input::old('groups') ? Input::old('groups') : $old_values, array('style' => 'height:200px;', 'class' => 'span6', 'required' => 'required', 'multiple' => 'multiple'));
-                        ?>
-                        @if ($errors && $errors->has('groups[]'))
-                            <span class="help-inline">This field is required</span>
-                        @endif
-                    </div>
-                </div>
 
 				<?
 				if (!empty($user->user_metadata->attributes)):
@@ -132,7 +108,7 @@
 	                                    <? else: ?>
 	                                        No Image Uploaded
 	                                    <? endif; ?>
-	                                    <a href="<?=$admin_alias;?>/users/edit_avatar/<?=$user->id;?>">Change/Upload Avatar</a>
+	                                    <a href="<?=$controller_alias;?>/edit_avatar">Change/Upload Avatar</a>
                                 	</div>
                                 </div>
                             </div>
