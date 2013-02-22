@@ -7,7 +7,7 @@ class Blog_Admin_Home_Controller extends Admin_Base_Controller {
 		parent::__construct();
 	
 		// only grant access to people in these groups
-		$this->filter('before', 'user_in_group', array(array('Administrator', 'Super Administrator', 'Blog Author')));
+		$this->filter('before', 'user_in_group', array(array('Super User', 'Administrator', 'Blog Contributor')));
 	}
 
 	public function get_index()

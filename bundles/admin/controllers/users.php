@@ -10,7 +10,7 @@ class Admin_Users_Controller extends Admin_Base_Controller {
 		parent::__construct();
 
 		// only grant access to people in these groups
-		$this->filter('before', 'user_in_group', array(array('Administrator', 'Super Administrator')));
+		$this->filter('before', 'user_in_group', array(array('Super User', 'Administrator')));
 
         $this->controller_alias = $this->admin_alias . '/users';
         $this->view_arguments['controller_alias'] = $this->controller_alias;
