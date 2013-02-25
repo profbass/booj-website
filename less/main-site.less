@@ -20,6 +20,7 @@ body.normal-layout {
 
 .site-header {
      position: fixed;
+     z-index: 5000;
      top: 0;
      left: 0;
      right: 0;
@@ -335,5 +336,19 @@ ul.contact-address-list {
 .booj-contact-form {
      label {
           text-transform: lowercase;
+     }
+}
+
+.booj-career-hero {
+     p {
+          font-size: 15px;
+          line-height: 27px;
+          margin-bottom: 18px;
+          &:last-child {
+               margin-bottom: 0;
+          }
+     }
+     .carousel-control {
+          top: 50%;
      }
 }

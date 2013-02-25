@@ -113,6 +113,13 @@
 									</div>
 								</div>
 							</div>
+							
+							<div class="control-group">
+								<div class="controls">
+									<div class="alert alert-block">For a reference on what markup to use and all the style resources visit <a href="http://www.getbootstrap.com" target="_blank">www.getbootstrap.com</a> and navigate to the <strong>Base CSS page</strong></div>
+								</div>
+							</div>
+
 						<? elseif (!in_array($meta_name, array('id', 'user_id', 'avatar', 'avatar_small'))): ?>
 							<div class="control-group">
 								<div class="control-group">

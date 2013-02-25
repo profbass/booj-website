@@ -57,4 +57,4 @@
 
 <hr>
 <a class="block margin-bottom-30 full-shadow" href="http://www.boojers.com" target="_blank"><img src="/img/meet-boojers.gif" alt="Meet the Boojers"></a>
-<a class="block full-shadow" href="/careers/"><img src="/img/were-hiring.jpg" alt="we're hiring"></a>
+<a class="block full-shadow" href="/career-portal"><img src="/img/were-hiring.jpg" alt="we're hiring"></a>

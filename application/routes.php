@@ -7,7 +7,6 @@ Route::get('/countdown', function()
 	exit();
 });
 
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes

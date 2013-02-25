@@ -43,7 +43,6 @@ if (typeof CKEDITOR === 'object') {
 				<div class="control-group">
 					<div class="controls">
 						<div class="alert alert-block">For a reference on what markup to use and all the style resources visit <a href="http://www.getbootstrap.com" target="_blank">www.getbootstrap.com</a> and navigate to the <strong>Base CSS page</strong></div>
-						<div class="alert alert-block">If you want an image to open as a nice lightbox add the attribute <strong>data-action="lightbox"</strong> to the a tag.<br> ie: &lt;a href="/img/something.jpg" title="Some description" target="_blank" data-action="lightbox"&gt;Click For Big Image&lt;/a&gt;</div>
 					</div>
 				</div>
 

@@ -124,12 +124,4 @@ $db_array = array(
 
 );
 
-
-// SETUP THE LIVE DATABASE CONFIGURATION SETTINGS FOR USERNAME AND PASSWORD
-if (Request::env() != 'local') {
-	$db_array['connections']['mysql']['database'] = '';
-	$db_array['connections']['mysql']['username'] = '';
-	$db_array['connections']['mysql']['password'] = '';
-}
-
 return $db_array;
