@@ -72,7 +72,9 @@
 	     		</tbody>
 	     	</table>
 	    <?php else: ?>
-	    	<p>No users. <a href="<?=$controller_alias;?>/new_user">Create User</a></p>
+	    	<p>No users. <a href="<?=$controller_alias;?>/create
+
+	    		">Create User</a></p>
      	<?php endif; ?>
     </div>
 </div>
