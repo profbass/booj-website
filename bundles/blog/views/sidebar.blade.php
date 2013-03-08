@@ -1,5 +1,5 @@
 
-<div class="fb-like-box" data-href="https://www.facebook.com/ActiveWebsite" data-width="292" data-border_color="#f0f1f1" data-show-faces="true" data-stream="false" data-header="false"></div>
+<div class="fb-like-box" data-href="https://www.facebook.com/boojers" data-width="292" data-border_color="#f0f1f1" data-show-faces="true" data-stream="false" data-header="false"></div>
 
 <a class="btn btn-block btn-large btn-primary margin-bottom-30 lower" target="_blank" href="<?=$action_urls['twitter'];?>boojers" title="follow @boojers"><i class="bicon-twitter"></i> follow @boojers</a>
 

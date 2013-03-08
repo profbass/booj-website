@@ -253,6 +253,7 @@ class Post extends Eloquent {
 			$post->save();
 
 			$similar = Post::with(array('category', 'tags', 'user'))
+				->where('is_published', '=', 1)
 				->where('category_id', '=', $post->category->id)
 				->where('id', '!=', $post->id)
 				->order_by('created_at', 'DESC')
@@ -261,6 +262,7 @@ class Post extends Eloquent {
 			;
 
 			$previous = Post::where('created_at', '<', $post->created_at)
+				->where('is_published', '=', 1)
 				->where('id', '!=', $post->id)
 				->order_by('created_at', 'DESC')
 				->take(1)
@@ -268,6 +270,7 @@ class Post extends Eloquent {
 			;
 
 			$next = Post::where('created_at', '>', $post->created_at)
+				->where('is_published', '=', 1)
 				->where('id', '!=', $post->id)
 				->order_by('created_at', 'ASC')
 				->take(1)
@@ -275,6 +278,7 @@ class Post extends Eloquent {
 			;
 
 			$random = Post::where('id', '!=', $post->id)
+				->where('is_published', '=', 1)
 				->order_by(DB::raw(''), DB::raw('RAND()'))
 				->take(1)
 				->get()

@@ -19,6 +19,22 @@
  			<li>&nbsp;</li>
  			<li><a href="/admin/logout">Logout</a></li>
  		</ul>
+ 		<br><br>
+ 		<p>
+ 			<button class="btn" id="browser_file_system">Browse And Manage Files</button>
+ 		</p>
 	</div>
 </div>
+@endsection
+
+@section('scripts')
+	<script src="/ckfinder/ckfinder.js"></script>
+	<script>
+	jQuery(document).ready(function($) {
+		$('#browser_file_system').on('click', function(event) {
+			event.preventDefault();
+			CKFinder.popup( '/public/ckfinder/', null, null, null);
+		});
+	});
+	</script>
 @endsection
