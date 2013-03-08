@@ -9,7 +9,7 @@ CKEDITOR.editorConfig = function( config ) {
 
 	config.forcePasteAsPlainText = true;
 
-	CKEDITOR.config.contentsCss = '/dist/ckeditor.css';
+	CKEDITOR.config.contentsCss = '/css/ckeditor.css';
 
 	config.toolbar = [
 		{ name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Save', 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo', 'RemoveFormat' ] },

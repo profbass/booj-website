@@ -133,7 +133,6 @@
 				<a class="addthis_button_tweet" tw:count="vertical"></a>
 				<a class="addthis_button_google_plusone" g:plusone:size="tall"></a>
 				<a class="addthis_button_linkedin_counter" li:counter="top"></a> 
-				<a class="addthis_button_pinterest_pinit" pi:pinit:url="http://www.booj.com<?=$action_urls['blog'];?>/<?=$data['post']->slug;?>" pi:pinit:media="http://www.booj.com<?=$data['post']->main_photo;?>" pi:pinit:layout="vertical"></a>
 			</div>
 		@else
 			<div class="alert alert-error alert-block">No post found</div>

@@ -56,5 +56,5 @@
 @endif
 
 <hr>
-<a class="block margin-bottom-30 full-shadow" href="http://www.boojers.com" target="_blank"><img src="/img/meet-boojers.gif" alt="Meet the Boojers"></a>
-<a class="block full-shadow" href="/career-portal"><img src="/img/were-hiring.jpg" alt="we're hiring"></a>
+<a href="http://www.boojers.com" target="_blank"><img src="/img/meet-boojers.gif" class="block margin-bottom-30 full-shadow" alt="Meet the Boojers"></a>
+<a href="/career-portal"><img src="/img/were-hiring.jpg" class="block full-shadow" alt="we're hiring"></a>

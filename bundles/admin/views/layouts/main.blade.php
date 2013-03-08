@@ -60,12 +60,12 @@
             ?>
             @yield('content')
         </div>
-    </body>
     
-    <script src="/bundles/admin/js/jquery-1.8.3.min.js"></script>
-    <script src="/bundles/admin/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
-    {{ Asset::scripts() }}
-    @yield('scripts')
-    <script src="/bundles/admin/js/admin.js"></script>
+        <script src="/bundles/admin/js/jquery-1.8.3.min.js"></script>
+        <script src="/bundles/admin/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
+        {{ Asset::scripts() }}
+        @yield('scripts')
+        <script src="/bundles/admin/js/admin.js"></script>
+    </body>
 </html>

@@ -31,10 +31,15 @@ body.normal-layout {
           .navbar-inner {
                margin: 0;
                padding: 0;
+               .box-shadow(none);
+               border: none;
           }
           .brand {
                margin: 26px 17px 20px 0;
                padding: 0;
+          }
+          .nav {
+               margin: 0;
           }
           .nav > li {
                margin-top: 30px;
@@ -46,6 +51,9 @@ body.normal-layout {
           }
           .nav > li > a > span {
                padding-bottom: 4px;
+          }
+          .nav > li.active a {
+               .box-shadow(none);
           }
           .nav > .active > a > span,
           .nav > li > a:hover > span,

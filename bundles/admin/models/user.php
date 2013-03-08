@@ -116,6 +116,10 @@ class User extends Eloquent {
 				if ($meta) {
 					$meta->delete();
 				}
+
+				// delete from group user
+				DB::table('group_user')->where('user_id', '=', $user->id)->delete();
+
 				$user->delete();
 				return TRUE;
 			}
@@ -153,10 +157,12 @@ class User extends Eloquent {
 	{
 		$user = new User;
 		if ($user) {
+			$pass = !empty($args['password']) ? $args['password'] : Config::get('Admin::auth.default_password');
 			$user->username = $user->make_slug($args['username']);
 			$user->email = $args['email'];
 			$user->first_name = $args['first_name'];
 			$user->last_name = $args['last_name'];
+			$user->password = Hash::make($pass);
 			$user->save();
 
 			$meta = new UserMetadata();

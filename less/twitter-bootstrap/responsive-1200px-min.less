@@ -1,29 +1,8 @@
 //
-// Hack to make the grid work correclty with a default 1170 for ie and browsers that don't support media queries: james
-// --------------------------------------------------
-@media (max-width: 1199px) {
-  // Fixed (940px)
-  #grid > .core(@gridColumnWidth960, @gridGutterWidth960);
-
-  // Fluid (940px)
-  #grid > .fluid(@fluidGridColumnWidth960, @fluidGridGutterWidth960);
-
-  // Reset utility classes due to specificity
-  [class*="span"].hide,
-  .row-fluid [class*="span"].hide {
-    display: none;
-  }
-
-  [class*="span"].pull-right,
-  .row-fluid [class*="span"].pull-right {
-    float: right;
-  }
-}
-
-
-//
 // Responsive: Large desktop and up
 // --------------------------------------------------
+
+
 @media (min-width: 1200px) {
 
   // Fixed grid

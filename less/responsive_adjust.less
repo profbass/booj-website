@@ -53,6 +53,14 @@
      }
 }
 
+@media (max-width: 1320px) {
+     #post-page .addthis_toolbox {
+          position: absolute;
+          top: 60px;
+          left: 0;
+     }
+}     
+
 // Tablets & small desktops only
 @media (min-width: 768px) and (max-width: 979px) {
      .container {
@@ -83,7 +91,19 @@
      #blog-search input[type="text"] {
           width: 65%;
      }
-}
+     #blog-nav {
+          .container {
+               width: 100%;
+          }
+          .navbar .navbar-inner .nav {
+               margin-left: 0;
+          }
+          .navbar .navbar-inner .nav > li > a {
+               font-size: 14px;
+          }
+     }
+
+ }
 // Phones only
 @media (max-width: 767px) {
      .container {
@@ -152,5 +172,7 @@
      #blog-search input[type="text"] {
           width: 40%;
      }    
-
+     #post-page .addthis_toolbox {
+          position: static;
+     }
 }
