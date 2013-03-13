@@ -16,9 +16,7 @@
 			<hr>
 
 			<p>
-				We couldn't find the page you requested on our servers. We're really sorry
-				about that. It's our fault, not yours. We'll work hard to get this page
-				back online as soon as possible.
+				Ohhhhh no! We couldn't find the page you requested.
 			</p>
 
 			<p>
