@@ -2,7 +2,7 @@
     <div class="container">
         <img src="/img/bg-footer-center.png" alt="Booj" id="site-footer-triangle">
         <div class="row-fluid">
-            <div class="span6">
+            <div class="span6 margin-bottom-30">
                 <div class="row-fluid">
                     <div class="span3">
                         <img src="/img/bg-footer-booj.png" alt="Booj">
@@ -15,7 +15,7 @@
             </div>
             <div class="span6">
                 <div class="row-fluid">
-                    <div class="span5">
+                    <div class="span5 margin-bottom-30">
                         <a href="http://www.youtube.com/boojvideos" title="Booj YouTube Page" target="_blank"><i class="bicon-gray-youtube margin-right-10">&nbsp;</i></a>
                         <a href="https://www.facebook.com/boojers" title="Booj Facebook Page" target="_blank"><i class="bicon-gray-facebook margin-right-10">&nbsp;</i></a>
                         <a href="https://plus.google.com/107717391600262472445" title="Booj Google Plus Page" target="_blank"><i class="bicon-gray-google-plus margin-right-10">&nbsp;</i></a>

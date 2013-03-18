@@ -83,7 +83,7 @@
                 </div>
             </div>
         </header>
-        <div class="content-container" style="padding-top: 120px;">
+        <div class="content-container">
             <div class="container">
                 @yield('content')
             </div>

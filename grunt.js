@@ -13,28 +13,28 @@ module.exports = function(grunt) {
     },
 
     lint: {
-      files: ['grunt.js', 'public/js/*.js']
+      files: ['grunt.js', 'public_html/js/*.js']
     },
 
     min: {
       dist: {
         src: [
-          'public/js/lib/jquery.js',
-          'public/js/lib/mustache.js',
-          'public/js/twitter-bootstrap/bootstrap-collapse.js', 
-          'public/js/twitter-bootstrap/bootstrap-carousel.js',
-          'public/js/twitter-bootstrap/bootstrap-transition.js', 
-          'public/js/hover_intent.js', 
-          'public/js/jquery.menu.js', 
-          'public/js/application.js'
+          'public_html/js/lib/jquery.js',
+          'public_html/js/lib/mustache.js',
+          'public_html/js/twitter-bootstrap/bootstrap-collapse.js', 
+          'public_html/js/twitter-bootstrap/bootstrap-carousel.js',
+          'public_html/js/twitter-bootstrap/bootstrap-transition.js', 
+          'public_html/js/hover_intent.js', 
+          'public_html/js/jquery.menu.js', 
+          'public_html/js/application.js'
         ],
-        dest: 'public/dist/app.min.js'
+        dest: 'public_html/dist/app.min.js'
       },
       distB: {
         src: [
-          'public/js/homepage.js'
+          'public_html/js/homepage.js'
         ],
-        dest: 'public/dist/homepage.min.js'
+        dest: 'public_html/dist/homepage.min.js'
       }
     },
 
@@ -44,7 +44,7 @@ module.exports = function(grunt) {
           yuicompress: true
         },
         files: {
-          'public/dist/style.min.css': ['less/style.less']
+          'public_html/dist/style.min.css': ['less/style.less']
         }
       }
     },
@@ -58,7 +58,7 @@ module.exports = function(grunt) {
         }
       },
       scripts: {
-        files: 'public/js/**.js',
+        files: 'public_html/js/**.js',
         tasks: ['lint', 'min'],
         options: {
           interrupt: true
