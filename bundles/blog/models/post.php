@@ -125,16 +125,23 @@ class Post extends Eloquent {
 	{
 		if ($id && $type) {
 			$post = Post::find($id);
+
+			$path = Config::get('Blog::blog.photo_path');
+
+			if (!is_dir($_SERVER['DOCUMENT_ROOT'] . $path)) {
+				mkdir($_SERVER['DOCUMENT_ROOT'] . $path, 0777);
+			}
+
 			if ($post) {
 				switch ($type) {
 					case 'main-photo':
 						$photo_name = uniqid('main-') . '.' . strtolower(File::extension(Input::file('main_photo.name')));
-						Input::upload('main_photo', $_SERVER['DOCUMENT_ROOT'] . '/uploads', $photo_name);
-						$post->main_photo = '/uploads/' . $photo_name;
+						Input::upload('main_photo', $_SERVER['DOCUMENT_ROOT'] . $path, $photo_name);
+						$post->main_photo = $path . '/' . $photo_name;
 
 						$post->save();
 
-						$resize_file = $_SERVER['DOCUMENT_ROOT'] . '/uploads/' . $photo_name;
+						$resize_file = $_SERVER['DOCUMENT_ROOT'] . $path . '/' . $photo_name;
 						$dims = Config::get('Blog::blog.main_photo');
 						Resizer::open( $resize_file )
 							->resize( $dims['width'] , $dims['height'] , 'crop' )
@@ -145,10 +152,10 @@ class Post extends Eloquent {
 					
 					case 'small-photo':
 						$photo_name = uniqid('small-') . '.' . strtolower(File::extension(Input::file('small_photo.name')));
-						Input::upload('small_photo', $_SERVER['DOCUMENT_ROOT'] . '/uploads', $photo_name);
-						$post->small_photo = '/uploads/' . $photo_name;
+						Input::upload('small_photo', $_SERVER['DOCUMENT_ROOT'] . $path, $photo_name);
+						$post->small_photo = $path . '/' . $photo_name;
 
-						$resize_file = $_SERVER['DOCUMENT_ROOT'] . '/uploads/' . $photo_name;
+						$resize_file = $_SERVER['DOCUMENT_ROOT'] . $path . '/' . $photo_name;
 						$dims = Config::get('Blog::blog.small_photo');
 						Resizer::open( $resize_file )
 							->resize( $dims['width'] , $dims['height'] , 'crop' )
@@ -193,13 +200,19 @@ class Post extends Eloquent {
 			}			
 			$post->slug = $post->make_slug($args['title']);
 
+			$path = Config::get('Blog::blog.photo_path');
+
+			if (!is_dir($_SERVER['DOCUMENT_ROOT'] . $path)) {
+				mkdir($_SERVER['DOCUMENT_ROOT'] . $path, 0777);
+			}
+
 			$main_photo_name = uniqid('main-') . '.' . strtolower(File::extension(Input::file('main_photo.name')));
-			Input::upload('main_photo', $_SERVER['DOCUMENT_ROOT'] . '/uploads', $main_photo_name);
-			$post->main_photo = '/uploads/' . $main_photo_name;
+			Input::upload('main_photo', $_SERVER['DOCUMENT_ROOT'] . $path, $main_photo_name);
+			$post->main_photo = $path . '/' . $main_photo_name;
 
 			$small_photo_name = uniqid('small-') . '.' . strtolower(File::extension(Input::file('small_photo.name')));
-			Input::upload('small_photo', $_SERVER['DOCUMENT_ROOT'] . '/uploads', $small_photo_name);
-			$post->small_photo = '/uploads/' . $small_photo_name;
+			Input::upload('small_photo', $_SERVER['DOCUMENT_ROOT'] . $path, $small_photo_name);
+			$post->small_photo = $path . '/' . $small_photo_name;
 
 			$post->save();
 
@@ -212,14 +225,14 @@ class Post extends Eloquent {
 				}
 			}
 
-			$resize_file = $_SERVER['DOCUMENT_ROOT'] . '/uploads/' . $main_photo_name;
+			$resize_file = $_SERVER['DOCUMENT_ROOT'] . $path . '/' . $main_photo_name;
 			$dims = Config::get('Blog::blog.main_photo');
 			Resizer::open( $resize_file )
 				->resize( $dims['width'] , $dims['height'] , 'crop' )
 				->save( $resize_file , 100 )
 			;
 
-			$resize_file = $_SERVER['DOCUMENT_ROOT'] . '/uploads/' . $small_photo_name;
+			$resize_file = $_SERVER['DOCUMENT_ROOT'] . $path . '/' . $small_photo_name;
 			$dims = Config::get('Blog::blog.small_photo');
 			Resizer::open( $resize_file )
 				->resize( $dims['width'] , $dims['height'] , 'crop' )
@@ -245,21 +258,50 @@ class Post extends Eloquent {
 		$data = FALSE;
 
 		$post = Post::with(array('category', 'tags', 'user'))->where('slug', '=', $slug)->first();
-		
+	
+
 		if ($post) {
 			// update the view count and last viewed
 			$post->number_views += 1;
 			$post->viewed_at = new \DateTime;
 			$post->save();
 
-			$similar = Post::with(array('category', 'tags', 'user'))
+			$similar_by_category = Post::with(array('category', 'tags', 'user'))
 				->where('is_published', '=', 1)
 				->where('category_id', '=', $post->category->id)
 				->where('id', '!=', $post->id)
 				->order_by('created_at', 'DESC')
-				->take(2)
+				->take(Config::get('Blog::blog.similar_category_count'))
 				->get()
-			;
+			;			
+
+			$similar_by_tags = array();
+			$tags = array();
+			$valid_ids = array();
+			if (!empty($post->tags)) {
+				foreach ($post->tags as $tag) {
+					$tags[] = $tag->id;
+				}
+				if (!empty($tags)) {
+					$similar_tag_ids = DB::table('post_tag')->where_in('tag_id', $tags)->take(Config::get('Blog::blog.similar_tag_count'))->get(array('post_id'));
+					
+					if (!empty($similar_tag_ids)) {
+						foreach ($similar_tag_ids as $obj) {
+							if ($obj->post_id != $post->id) {
+								$valid_ids[] = $obj->post_id;
+							}
+						}
+						if (!empty($valid_ids)) {
+							$similar_by_tags = Post::with(array('category', 'tags', 'user'))
+								->where('is_published', '=', 1)
+								->where_in('id', $valid_ids)
+								->order_by('created_at', 'DESC')
+								->get()
+							;
+						}
+					}
+				}
+			}
 
 			$previous = Post::where('created_at', '<', $post->created_at)
 				->where('is_published', '=', 1)
@@ -287,7 +329,8 @@ class Post extends Eloquent {
 			if ($post) {
 				$data = array(
 					'post' => $post,
-					'similar_posts' => $similar,
+					'similar_posts_by_category' => $similar_by_category,
+					'similar_posts_by_tags' => $similar_by_tags,
 					'next_post' => !empty($next) ? $next[0] : FALSE,
 					'previous_post' => !empty($previous) ? $previous[0] : FALSE,
 					'random_post' => !empty($random) ? $random[0] : FALSE,
@@ -334,7 +377,7 @@ class Post extends Eloquent {
 	public static function get_posts($count = FALSE)
 	{
 		if (!$count) {
-			$count = Config::get('Blog::blog.paging_count');
+			$count = Config::get('Blog::blog.posts_per_page');
 		}
 		return Post::with(array('category', 'user'))
 			->order_by('created_at', 'DESC')
@@ -345,7 +388,7 @@ class Post extends Eloquent {
 
 	public static function get_posts_for_admin()
 	{
-		return Post::with(array('category'))
+		return Post::with(array('category', 'tags'))
 			->order_by('created_at', 'DESC')
 			->paginate(20)
 		;

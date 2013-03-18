@@ -5,6 +5,7 @@ use Blog\Models\Category as Category;
 use Blog\Models\Tag as Tag;
 use Blog\Models\Author as Author;
 use Content\Models\Menuitem as Menuitem;
+use \Laravel\Config as Config;
 
 class Blog_Base_Controller extends Controller {
     public $restful = true;
@@ -16,25 +17,31 @@ class Blog_Base_Controller extends Controller {
     public function __construct()
     {
         parent::__construct();
+
+        $base = Config::get('Blog::blog.blog_url');
+        $domain = Config::get('Blog::blog.domain');
+
         $this->action_urls =  $this->view_arguments['action_urls'] = array(
-            'domain' => 'http://www.booj.com',
-            'blog' => '/blog',
-            'author' => '/blog/authors',
-            'tag' => '/blog/tags',
-            'category' => '/blog/categories',
-            'subscribe' => '/blog/subscribe',
+            'domain' => $domain,
+            'blog' => $base,
+            'author' => $base . '/authors',
+            'tag' => $base . '/categories',
+            'category' => $base . '/categories',
+            'subscribe' => $base . '/subscribe',
             'facebook' => 'https://www.facebook.com/',
             'twitter' => 'https://twitter.com/',
             'google_plus' => 'https://plus.google.com/',
         );
 
-        $this->controller_alias =  $this->view_arguments['controller_alias'] = '/blog';
+        $this->controller_alias =  $this->view_arguments['controller_alias'] = $base;
         
         $this->view_arguments['current_uri'] = Request::uri();
-        $this->view_arguments['page_data'] = Menuitem::get_page_by_uri('blog');
-        $this->view_arguments['popular_authors'] = Author::get_most_popular(5);
-        $this->view_arguments['popular'] = Post::get_most_popular_posts();
+        $this->view_arguments['page_data'] = Menuitem::get_page_by_uri(str_replace('/', '', $base));
+        $this->view_arguments['popular_authors'] = Author::get_most_popular(Config::get('Blog::blog.number_popular_authors'));
+        $this->view_arguments['popular'] = Post::get_most_popular_posts(Config::get('Blog::blog.number_popular_posts'));
         $this->view_arguments['categories'] = Category::get_categories();
+        // $this->view_arguments['tags'] = Tag::get_tags();
+
     }
     
     /**

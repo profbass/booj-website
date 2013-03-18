@@ -17,7 +17,7 @@ class Blog_Rss_Controller extends Blog_Base_Controller {
 
     public function get_feed()
     {
-    	$name = $_SERVER['DOCUMENT_ROOT'] . '/rss/feed.xml';
+        $name = $_SERVER['DOCUMENT_ROOT'] . '/rss/feed.xml';
 
     	if (file_exists($name)) {
     		return file_get_contents($name);

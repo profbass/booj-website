@@ -131,7 +131,7 @@ class Category extends Eloquent {
 		if ($slug) {
 			$category = Category::get_category_by_slug($slug);
 			if ($category) {
-				$posts = $category->posts()->where('is_published', '=', 1)->order_by('created_at', 'DESC')->paginate(Config::get('Blog::blog.paging_count'));
+				$posts = $category->posts()->where('is_published', '=', 1)->order_by('created_at', 'DESC')->paginate(Config::get('Blog::blog.posts_per_page'));
 				$data = array(
 					'category' => $category,
 					'posts' => $posts,

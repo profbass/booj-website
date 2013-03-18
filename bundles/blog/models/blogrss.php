@@ -2,6 +2,7 @@
 namespace Blog\Models;
 use \Laravel\Database\Eloquent\Model as Eloquent;
 use \XMLWriter as XMLWriter;
+use \Laravel\Config as Config;
 
 class Blogrss extends Eloquent {
 
@@ -13,6 +14,9 @@ class Blogrss extends Eloquent {
 		$writer = new XMLWriter();
 		$uri = $_SERVER['DOCUMENT_ROOT'] . '/rss/feed.xml';
 
+		if (!is_dir($_SERVER['DOCUMENT_ROOT'] . '/rss')) {
+			mkdir($_SERVER['DOCUMENT_ROOT'] . '/rss', 0777);
+		}
 
 		touch($uri);
 		$uri = realpath($uri);
@@ -28,9 +32,9 @@ class Blogrss extends Eloquent {
 		$writer->startElement("channel"); 
 		
 		//---------------------------------------------------- 
-		$writer->writeElement('title', 'Booj Bytes'); 
-		$writer->writeElement('description', 'This is the latest from Booj.'); 
-		$writer->writeElement('link', $host . '/blog'); 
+		$writer->writeElement('title', Config::get('Blog::blog.blog_name')); 
+		$writer->writeElement('description', Config::get('Blog::blog.blog_description')); 
+		$writer->writeElement('link', $host . Config::get('Blog::blog.blog_url')); 
 		$writer->writeElement('pubDate', date("D, d M Y H:i:s e")); 
 		//---------------------------------------------------- 
 

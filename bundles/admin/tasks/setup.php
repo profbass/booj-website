@@ -7,6 +7,9 @@ use Admin\Models\User as User;
 
 class Admin_Setup_Task {
 
+	/**
+	 * php artisan admin::setup user First Last username email password
+	 */
 	public function user($arguments)
 	{
 		if (empty($arguments) || count($arguments) < 5) {
@@ -45,16 +48,6 @@ class Admin_Setup_Task {
 		$t = DB::table('groups')->where('name', '=', 'Administrator')->count();
 		if ($t < 1) {
 			DB::table('groups')->insert(array('name' => 'Administrator'));
-		}
-
-		$t = DB::table('groups')->where('name', '=', 'Content Writer')->count();
-		if ($t < 1) {
-			DB::table('groups')->insert(array('name' => 'Content Writer'));
-		}
-
-		$t = DB::table('groups')->where('name', '=', 'Blog Contributor')->count();
-		if ($t < 1) {
-			DB::table('groups')->insert(array('name' => 'Blog Contributor'));
 		}
 
 		if (!empty($arguments)) {

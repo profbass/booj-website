@@ -20,9 +20,9 @@
 
 @section('opengraph')
 @if (!empty($data['post']))
-<meta property="og:title" content="<?=$data['post']->truncated_content(75);?>">
-<meta property="og:url" content="http://www.booj.com<?=$action_urls['blog'];?>/<?=$data['post']->slug;?>">
-<meta property="og:image" content="http://www.booj.com<?=$data['post']->main_photo;?>">
+<meta property="og:title" content="<?=$data['post']->title;?>">
+<meta property="og:url" content="<?=$action_urls['domain'];?><?=$action_urls['blog'];?>/<?=$data['post']->slug;?>">
+<meta property="og:image" content="<?=$action_urls['domain'];?><?=$data['post']->main_photo;?>">
 @endif
 @endsection
 
@@ -102,11 +102,11 @@
 					<p><?=$data['post']->user->user_metadata->bio;?></p>
 				</div>
 			@endif
-			@if (!empty($data['similar_posts']))
+			@if (!empty($data['similar_posts_by_category']))
 				<div class="post-similar-section">
 					<h2 class="font-30">You May Also Like</h2>
 					<div class="row-fluid">
-						<? foreach ($data['similar_posts'] as $post): ?>
+						<? foreach ($data['similar_posts_by_category'] as $post): ?>
 							<div class="span6 post-landing shadow-box white-box">
 								<div class="post-landing-photo">
 									<a href="<?=$action_urls['blog'];?>/<?=$post->slug;?>" title="<?=$post->short_title;?>"><img src="<?=$post->small_photo;?>" alt="<?=$post->short_title;?>"></a>
@@ -128,7 +128,7 @@
 			@endif
 			<div id="disqus_thread" class="margin-bottom-30 shadow-box white-box"></div>
 
-			<div class="addthis_toolbox addthis_floating_style addthis_counter_style" addthis:url="http://booj.com<?=$action_urls['blog'];?>/<?=$data['post']->slug;?>" addthis:title="<?=$data['post']->title;?>"">
+			<div class="addthis_toolbox addthis_floating_style addthis_counter_style" addthis:url="<?=$action_urls['domain'];?><?=$action_urls['blog'];?>/<?=$data['post']->slug;?>" addthis:title="<?=$data['post']->title;?>">
 				<a class="addthis_button_facebook_like" fb:like:layout="box_count"></a>
 				<a class="addthis_button_tweet" tw:count="vertical"></a>
 				<a class="addthis_button_google_plusone" g:plusone:size="tall"></a>
@@ -147,9 +147,9 @@
 @section('scripts')
 <? if (!empty($data['post'])): ?>
 <script>
-var disqus_shortname = 'booj';
+var disqus_shortname = '<?=$disgus_id;?>';
 var disqus_identifier = '<?=$data['post']->id;?>';
-var disqus_url = 'http://www.booj.com<?=$action_urls['blog']; ?>/<?=$data['post']->slug;?>';
+var disqus_url = '<?=$action_urls['domain'];?><?=$action_urls['blog']; ?>/<?=$data['post']->slug;?>';
 /* * * DON'T EDIT BELOW THIS LINE * * */
 (function() {
     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

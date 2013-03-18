@@ -63,9 +63,8 @@
 										<? endif; ?>
 									</p>
 									<p class="post-landing-content"><?=$post->truncated_content();?></p>
-									<div class="addthis_toolbox addthis_default_style" addthis:url="http://booj.com<?=$action_urls['blog'];?>/<?=$post->slug;?>" addthis:title="<?=$post->title;?>">
+									<div class="addthis_toolbox addthis_default_style" addthis:url="<?=$action_urls['domain'];?><?=$action_urls['blog'];?>/<?=$post->slug;?>" addthis:title="<?=$post->title;?>">
 										<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-										<!-- <a class="addthis_button_linkedin_counter"></a>  -->
 										<a class="addthis_button_google_plusone" g:plusone:size="medium"></a> 
 										<a class="addthis_button_tweet"></a>
 									</div>

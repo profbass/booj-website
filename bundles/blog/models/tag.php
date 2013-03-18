@@ -122,7 +122,7 @@ class Tag extends Eloquent {
 
 	public static function get_posts_in_tag_by_slug($slug = FALSE, $count = FALSE) 
 	{
-		$num = $count ? $count : Config::get('Blog::blog.paging_count');
+		$num = $count ? $count : Config::get('Blog::blog.posts_per_page');
 		$data = FALSE;
 
 		if ($slug) {
