@@ -1,6 +1,6 @@
 <?php
 return array(
-	'admin_email' => 'info@booj.com',
+	'admin_email' => 'james@booj.com',
 	'admin_name' => 'Booj',
 	'reset_email_subject' => 'Reset your Booj password',
 	'site_name' => 'Booj',
