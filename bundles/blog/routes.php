@@ -63,4 +63,7 @@ View::composer(array('blog::layouts.layout'), function($view)
 	} else {
 		$view['current_category'] = FALSE;
 	}
+
+	// set the build version 
+	$view['build_version'] = Config::get('application.build_version');
 });

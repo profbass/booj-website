@@ -148,6 +148,7 @@ BoojQuestions.prototype = {
 				self.nextQuestion();
 			}
 		});
+		// console.log(this.template, this.questions);
 		this.render(this.currQ);
 	},
 	nextQuestion: function () {
@@ -160,26 +161,28 @@ BoojQuestions.prototype = {
 	render: function (i) {
 		var self = this;
 		var q = this.questions[i];
-		var output = $(Mustache.render(this.template, q));
-		var el = self.wrap.children();
+		var output = Mustache.render(this.template, q);
+		var el = this.wrap.children();
+		var temp = $('<div></div>').html(output);
+		var newBlock = temp.find('.booj-question');
 		if (el.length) {
+
 			el.animate({left: (this.win.width() * 2), opacity: 0}, 500, function() {
-				output.css({
+				newBlock.css({
 					left: (self.win.width() * 2) * -1,
 					opacity: 0
 				});
-				self.wrap.html(output);
-				output.animate({left: 0, opacity: 1}, 500);
+				self.wrap.html(newBlock);
+				newBlock.animate({left: 0, opacity: 1}, 500);
 			});
 		} else {
-			output.css({
+			newBlock.css({
 				left: (self.win.width() * 2) * -1,
 				opacity: 0
 			});
-			self.wrap.html(output);
-			output.animate({left: 0, opacity: 1}, 500);
-		}
-		
+			self.wrap.html(newBlock);
+			newBlock.animate({left: 0, opacity: 1}, 500);
+		}		
 	}, 
 	scrollToSection: function (t) {
 		var self = this;

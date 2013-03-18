@@ -15,8 +15,8 @@
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
         <link href='http://fonts.googleapis.com/css?family=Roboto:300,300italic' rel='stylesheet' type='text/css'>
-        <link href="/css/filters.css" rel="stylesheet">
-        <link href="/dist/style.min.css" rel="stylesheet">
+        <link href="/css/filters.<? if(!empty($build_version)) echo $build_version . '.';?>css" rel="stylesheet">
+        <link href="/dist/style.min.<? if(!empty($build_version)) echo $build_version . '.';?>css" rel="stylesheet">
         {{ Asset::styles() }}
         @yield('styles')
     </head>
@@ -90,7 +90,7 @@
         </div>
         @include('content::footers.footer')
 
-        <script src="/dist/app.min.js"></script>
+        <script src="/dist/app.min.<? if(!empty($build_version)) echo $build_version . '.';?>js"></script>
        
         {{ Asset::scripts() }}
         @yield('scripts')
