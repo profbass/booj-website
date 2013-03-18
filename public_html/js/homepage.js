@@ -241,10 +241,12 @@ BoojTeams.prototype = {
 	},
 
 	renderBio: function (args) {
-		var j, output;
-		output = $(Mustache.render(this.template, args)).hide();
-		args.row.after(output);
-		output.slideDown('fast');
+		var j, output, temp, obj;
+		output = Mustache.render(this.template, args);
+		temp = $('<div></div>').html(output);
+		obj = temp.find('.team-bio-info').hide();
+		args.row.after(obj);
+		obj.slideDown('fast');
 	}
 };
 
