@@ -1,7 +1,7 @@
 @layout('blog::layouts.layout')
 
 @section('page_title')
- ~ <? if (!empty($data['tag'])) echo $data['tag']->title . ' Tag'; else echo 'Tags'; ?>
+ ~ <? if (!empty($data['tag'])) echo strtolower($data['tag']->title) . ' tag'; else echo 'tags'; ?>
 @endsection
 
 @section('page_description')

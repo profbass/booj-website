@@ -11,7 +11,7 @@
         <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/blog/rss">
         <link href='https://plus.google.com/107717391600262472445' rel="publisher" title='booj on Google+'>
         <link rel="canonical" href="http://www.booj.com/">
-        <title>Booj | web development &amp; technology blog @yield('page_title')</title>
+        <title>booj | web development &amp; technology blog @yield('page_title')</title>
         <!--[if lt IE 9]>
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->

@@ -1,7 +1,7 @@
 @layout('blog::layouts.layout')
 
 @section('page_title')
- ~ Author
+ ~ author
 @endsection
 
 @section('page_description')

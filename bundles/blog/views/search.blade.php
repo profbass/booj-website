@@ -1,7 +1,7 @@
 @layout('blog::layouts.layout')
 
 @section('page_title')
- ~ Search Results
+ ~ search results
 @endsection
 
 @section('page_description')

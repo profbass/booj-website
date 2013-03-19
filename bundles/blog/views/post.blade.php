@@ -2,7 +2,7 @@
 
 @section('page_title')
 @if (!empty($data['post']))
-~ {{ $data['post']->title }}
+~ {{ strtolower($data['post']->title) }}
 @endif
 @endsection
 

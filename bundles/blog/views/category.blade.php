@@ -1,7 +1,7 @@
 @layout('blog::layouts.layout')
 
 @section('page_title')
- ~ <? if (!empty($data['category'])) echo $data['category']->title . ' Category'; else echo 'Categories'; ?>
+ ~ <? if (!empty($data['category'])) echo strtolower($data['category']->title) . ' category'; else echo 'categories'; ?>
 @endsection
 
 @section('page_description')

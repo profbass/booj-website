@@ -1,7 +1,7 @@
 @layout('blog::layouts.layout')
 
 @section('page_title')
- ~ Meet Our Blog Contributors
+ ~ meet our blog contributors
 @endsection
 
 @section('page_description')

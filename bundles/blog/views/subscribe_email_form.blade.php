@@ -1,7 +1,7 @@
 @layout('blog::layouts.layout')
 
 @section('page_title')
-| Blog ~ Subscribe By Email
+| blog ~ subscribe by email
 @endsection
 
 

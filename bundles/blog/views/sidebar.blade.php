@@ -3,7 +3,9 @@
 
 <a class="btn btn-block btn-large btn-primary margin-bottom-30 lower" target="_blank" href="<?=$action_urls['twitter'];?>boojers" title="follow @boojers"><i class="bicon-twitter"></i> follow @boojers</a>
 
-<a class="btn btn-block btn-large btn-primary lower" href="http://feeds.feedburner.com/Booj" target="_blank" title="Subscribe by email">Subscribe by Email</a>
+<a class="btn btn-block btn-large btn-primary margin-bottom-30 lower" href="http://feeds.feedburner.com/Booj" target="_blank" title="Subscribe by email">Subscribe by Email</a>
+
+<a class="btn btn-block btn-large btn-primary lower" href="/contact-us" title="Contact Us">Contact Us</a>
 
 <hr>
 
@@ -56,5 +58,5 @@
 @endif
 
 <hr>
-<a href="http://www.boojers.com" target="_blank"><img src="/img/meet-boojers.gif" class="block margin-bottom-30 full-shadow" alt="Meet the Boojers"></a>
-<a href="/career-portal"><img src="/img/were-hiring.jpg" class="block full-shadow" alt="we're hiring"></a>
+<a href="http://www.boojers.com" title="Meet the boojers" target="_blank"><img src="/img/meet-boojers.gif" class="block margin-bottom-30 full-shadow" alt="Meet the Boojers"></a>
+<a href="/career-portal" title="Career Portal" target="_blank"><img src="/img/were-hiring.jpg" class="block full-shadow" alt="we're hiring"></a>

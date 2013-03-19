@@ -10,7 +10,7 @@
         <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/blog/rss">
         <link href='https://plus.google.com/107717391600262472445' rel="publisher" title='booj on Google+'>
         <link rel="canonical" href="http://www.booj.com/">
-        <title>Booj @yield('page_title')</title>
+        <title>booj @yield('page_title')</title>
         <!--[if lt IE 9]>
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
@@ -43,7 +43,7 @@
                                         @if (isset($menu_items))
                                             @foreach ($menu_items as $menu_item)
                                                 <li class="<? if ( $current_uri == $menu_item->uri || ($parent_menu_item == $menu_item->uri)) { echo 'active'; } if (!empty($menu_item->children)) { echo 'dropdown'; }?>">
-                                                    @if (in_array($menu_item->uri, array('/about', '/teams', '/products', '/events')))
+                                                    @if (in_array($menu_item->uri, array('/about', '/teams', '/clients', '/events')))
                                                         <a class="click-to-section" data-target="#<?=str_replace('/', '', $menu_item->uri);?>-section" href="#<?=str_replace('/', '', $menu_item->uri);?>-section" title="{{ $menu_item->pretty_name }}"><span>{{ $menu_item->pretty_name }}@if (!empty($menu_item->children)) <b class="caret"></b>@endif</span></a>
                                                     @elseif (in_array($menu_item->uri, array('/')))
                                                         <a class="click-to-section" data-target="#home-section" href="#home-section" title="{{ $menu_item->pretty_name }}"><span>{{ $menu_item->pretty_name }}@if (!empty($menu_item->children)) <b class="caret"></b>@endif</span></a>
