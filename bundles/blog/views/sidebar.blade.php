@@ -3,7 +3,7 @@
 
 <a class="btn btn-block btn-large btn-primary margin-bottom-30 lower" target="_blank" href="<?=$action_urls['twitter'];?>boojers" title="follow @boojers"><i class="bicon-twitter"></i> follow @boojers</a>
 
-<a class="btn btn-block btn-large btn-primary margin-bottom-30 lower" href="http://feeds.feedburner.com/Booj" target="_blank" title="Subscribe by email">Subscribe by Email</a>
+<a class="btn btn-block btn-large btn-primary margin-bottom-30 lower" href="http://feedburner.google.com/fb/a/mailverify?uri=Booj&amp;loc=en_US" target="_blank" title="Subscribe by email">Subscribe by Email</a>
 
 <a class="btn btn-block btn-large btn-primary lower" href="/contact-us" title="Contact Us">Contact Us</a>
 
