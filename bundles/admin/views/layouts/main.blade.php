@@ -35,6 +35,7 @@
                             @endif
                         </ul>
                     </div>
+                    <div id="alert-notice-wrapper" class="clearfix"><div id="alert-notice" class="alert" style="display:none;"></div></div>
                 </div>
             </div>
         </nav>
