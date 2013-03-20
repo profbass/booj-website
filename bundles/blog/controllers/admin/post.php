@@ -23,7 +23,7 @@ class Blog_Admin_Post_Controller extends Admin_Base_Controller {
 
 	public function get_index()
 	{
-		
+		$this->view_arguments['blog_url'] = Config::get('Blog::blog.blog_url');
 		$this->view_arguments['posts'] = Post::get_posts_for_admin();
 
 		return View::make('blog::admin.post.index', $this->view_arguments);
