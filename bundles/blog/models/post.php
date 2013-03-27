@@ -247,11 +247,18 @@ class Post extends Eloquent {
 		return FALSE;
 	}
 
-	public static function get_post_from_uri($slug) 
+	public static function get_post_from_uri($slug = FALSE) 
 	{
 		$key = 'blog_post_slug_' . $slug;
 
 		if (Cache::has($key)) {
+			// update the view count and last viewed
+			$post = Post::where('slug', '=', $slug)->first();
+			if ($post) {
+				$post->number_views += 1;
+				$post->viewed_at = new \DateTime;
+				$post->save();
+			}
 			return Cache::get($key);
 		}
 
