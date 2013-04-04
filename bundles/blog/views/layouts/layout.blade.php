@@ -6,6 +6,7 @@
         <meta name="keywords" content="@yield('page_keywords')">
         <meta name="description" content="@yield('page_description')">
         <meta name="robots" content="index,follow">
+        <meta name="google-site-verification" content="phSnk9YeCZCEuzy9AaIECmpP06UO73xh6BRHwCd22wY">
         @yield('opengraph')
         <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
         <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/blog/rss">
