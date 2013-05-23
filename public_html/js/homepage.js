@@ -271,8 +271,7 @@ $(function () {
 	});	
 
 	jcarouselElem2.jcarousel({
-		animation: 'slow',
-		wrap: 'circular'
+		animation: 'slow'
 	});
 	jcarouselElem2.parent().find(jcarouselElem.data('next')).on('click', function (e) {
 		e.preventDefault();
