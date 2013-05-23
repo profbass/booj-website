@@ -31,7 +31,7 @@
                         <a href="/" class="blog-back-home pull-left"><i class="bicon-previous"></i> Back to booj</a>
                     </div>
                     <div class="span4 blog-header-social clearfix hidden-phone">
-                        <a href="http://www.youtube.com/boojvideos" title="Booj YouTube Page" target="_blank"><i class="bicon-white-youtube">&nbsp;</i></a>
+                        <a href="https://www.youtube.com/boojvideo" title="Booj YouTube Page" target="_blank"><i class="bicon-white-youtube">&nbsp;</i></a>
                         <a href="https://www.facebook.com/boojers" title="Booj Facebook Page" target="_blank"><i class="bicon-white-facebook">&nbsp;</i></a>
                         <a href="https://plus.google.com/107717391600262472445" title="Booj Google Plus Page" target="_blank"><i class="bicon-white-google-plus">&nbsp;</i></a>
                         <a href="http://www.twitter.com/boojers" title="Booj Twitter Page" target="_blank"><i class="bicon-white-twitter">&nbsp;</i></a>
@@ -66,7 +66,7 @@
                                     <? endforeach; ?>
                                 @endif
                                 <li class="visible-phone clearfix">
-                                    <a href="http://www.youtube.com/boojvideos" title="Booj YouTube Page" target="_blank" style="float:left;"><i class="bicon-gray-youtube">&nbsp;</i></a>
+                                    <a href="https://www.youtube.com/boojvideo" title="Booj YouTube Page" target="_blank" style="float:left;"><i class="bicon-gray-youtube">&nbsp;</i></a>
                                     <a href="https://www.facebook.com/boojers" title="Booj Facebook Page" target="_blank" style="float:left;"><i class="bicon-gray-facebook">&nbsp;</i></a>
                                     <a href="https://plus.google.com/107717391600262472445" title="Booj Google Plus Page" target="_blank" style="float:left;"><i class="bicon-gray-google-plus">&nbsp;</i></a>
                                     <a href="http://www.twitter.com/boojers" title="Booj Twitter Page" target="_blank" style="float:left;"><i class="bicon-gray-twitter">&nbsp;</i></a>

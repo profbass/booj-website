@@ -32,7 +32,7 @@ class Blogrss extends Eloquent {
 		$writer->startElement("channel"); 
 		
 		//---------------------------------------------------- 
-		$writer->writeElement('title', Config::get('Blog::blog.blog_name')); 
+		$writer->writeElement('title', Config::get('Blog::blog.blog_name'));
 		$writer->writeElement('description', Config::get('Blog::blog.blog_description')); 
 		$writer->writeElement('link', $host . Config::get('Blog::blog.blog_url')); 
 		$writer->writeElement('pubDate', date("D, d M Y H:i:s e")); 
@@ -43,7 +43,9 @@ class Blogrss extends Eloquent {
 				$writer->startElement("item"); 
 					$writer->writeElement('title', $post->title); 
 					$writer->writeElement('link', $host . '/blog/' . $post->slug ); 
-					$writer->writeElement('description', $post->truncated_content(100)); 
+					$writer->startElement('description');
+						$writer->writeCData(str_replace('src="', 'src="' . $host, $post->content));
+					$writer->endElement();
 					$writer->writeElement('guid', $host . '/blog/' . $post->slug ); 
 					$writer->writeElement('pubDate', date("D, d M Y H:i:s e", strtotime($post->created_at)));
 					if (!empty($post->category)) { 

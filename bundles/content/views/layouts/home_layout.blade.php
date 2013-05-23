@@ -71,7 +71,7 @@
                                         @endif
                                         <li class="hidden-desktop"><a href="/contact" title="Contact us"><span>Contact Us</span></a></li>
                                         <li class="hidden-desktop clearfix">
-                                            <a href="http://www.youtube.com/boojvideos" title="Booj YouTube Page" target="_blank" style="float:left;"><i class="bicon-white-youtube">&nbsp;</i></a>
+                                            <a href="https://www.youtube.com/boojvideo" title="Booj YouTube Page" target="_blank" style="float:left;"><i class="bicon-white-youtube">&nbsp;</i></a>
                                             <a href="https://www.facebook.com/boojers" title="Booj Facebook Page" target="_blank" style="float:left;"><i class="bicon-white-facebook">&nbsp;</i></a>
                                             <a href="https://plus.google.com/107717391600262472445" title="Booj Google Plus Page" target="_blank" style="float:left;"><i class="bicon-white-google-plus">&nbsp;</i></a>
                                             <a href="http://www.twitter.com/boojers" title="Booj Twitter Page" target="_blank" style="float:left;"><i class="bicon-white-twitter">&nbsp;</i></a>
@@ -82,7 +82,7 @@
                         </div>
                     </div>
                     <div class="span2 header-social-networks visible-desktop">
-                        <a href="http://www.youtube.com/boojvideos" title="Booj YouTube Page" target="_blank"><i class="bicon-white-youtube">&nbsp;</i></a>
+                        <a href="https://www.youtube.com/boojvideo" title="Booj YouTube Page" target="_blank"><i class="bicon-white-youtube">&nbsp;</i></a>
                         <a href="https://www.facebook.com/boojers" title="Booj Facebook Page" target="_blank"><i class="bicon-white-facebook">&nbsp;</i></a>
                         <a href="https://plus.google.com/107717391600262472445" title="Booj Google Plus Page" target="_blank"><i class="bicon-white-google-plus">&nbsp;</i></a>
                         <a href="http://www.twitter.com/boojers" title="Booj Twitter Page" target="_blank"><i class="bicon-white-twitter">&nbsp;</i></a>

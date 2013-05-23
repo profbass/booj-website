@@ -13,7 +13,7 @@
 	
 	<div id="blog-sidebar-top-posts">
 		<h3 class="font-30 margin-0">Top Posts</h3>
-		<ul class="unstyled">
+		<ol>
 			<? $iter = 0; ?>
 			<? foreach ($popular as $post): ?>
 				<li>
@@ -24,7 +24,7 @@
 				</li>
 				<? $iter++; ?>
 			<? endforeach; ?>
-		</ul>
+		</ol>
 	</div>
 
 @endif

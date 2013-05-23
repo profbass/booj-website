@@ -9,7 +9,7 @@ class Author extends Eloquent {
 	public static $timestamps = true;
 	public static $table = 'users';
 
-	public static function get_most_popular($number_authors = 1)
+	public static function get_most_popular($number_authors = 1, $exclude_array = array())
 	{
 		$key = 'most_popular_authors';
 
@@ -17,10 +17,15 @@ class Author extends Eloquent {
 			return Cache::get($key);
 		}
 
+		if (empty($exclude_array)) {
+			$exclude_array = array(0);
+		}
+
 		$query = DB::table('posts')
 			->select(array('posts.user_id', DB::raw('count(*) AS number_posts'), 'users.*', 'users_metadata.avatar_small', 'users_metadata.title', 'users_metadata.twitter_handle'))
 			->join('users', 'users.id', '=', 'posts.user_id')
-			->join('users_metadata', 'users_metadata.user_id', '=', 'posts.user_id')
+			->join('users_metadata', 'users_metadata.user_id', '=', 'posts.user_id')					
+			->where_not_in('users.id', $exclude_array)
 			->group_by('user_id')
 			->order_by('number_posts', 'DESC')
 			->take($number_authors)

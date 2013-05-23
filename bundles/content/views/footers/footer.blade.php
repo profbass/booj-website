@@ -16,7 +16,7 @@
             <div class="span6">
                 <div class="row-fluid">
                     <div class="span5 margin-bottom-30">
-                        <a href="http://www.youtube.com/boojvideos" title="Booj YouTube Page" target="_blank"><i class="bicon-gray-youtube margin-right-10">&nbsp;</i></a>
+                        <a href="https://www.youtube.com/boojvideo" title="Booj YouTube Page" target="_blank"><i class="bicon-gray-youtube margin-right-10">&nbsp;</i></a>
                         <a href="https://www.facebook.com/boojers" title="Booj Facebook Page" target="_blank"><i class="bicon-gray-facebook margin-right-10">&nbsp;</i></a>
                         <a href="https://plus.google.com/107717391600262472445" title="Booj Google Plus Page" target="_blank"><i class="bicon-gray-google-plus margin-right-10">&nbsp;</i></a>
                         <a href="http://www.twitter.com/boojers" title="Booj Twitter Page" target="_blank"><i class="bicon-gray-twitter">&nbsp;</i></a>

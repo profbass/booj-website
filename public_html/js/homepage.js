@@ -253,13 +253,14 @@ BoojTeams.prototype = {
 $(function () {
 	var homScrollObj = new BoojScrollHomePage();
 	var jcarouselElem = $('#jcarousel1');
+	var jcarouselElem2 = $('#jcarousel2');
 	var questions = new BoojQuestions();
 	var teams = new BoojTeams();
+	
 	jcarouselElem.jcarousel({
 		animation: 'slow',
 		wrap: 'circular'
 	});
-
 	jcarouselElem.parent().find(jcarouselElem.data('next')).on('click', function (e) {
 		e.preventDefault();
 		jcarouselElem.jcarousel('scroll', '-=1');
@@ -268,6 +269,19 @@ $(function () {
 		e.preventDefault();
 		jcarouselElem.jcarousel('scroll', '+=1');
 	});	
+
+	jcarouselElem2.jcarousel({
+		animation: 'slow',
+		wrap: 'circular'
+	});
+	jcarouselElem2.parent().find(jcarouselElem.data('next')).on('click', function (e) {
+		e.preventDefault();
+		jcarouselElem2.jcarousel('scroll', '-=5');
+	});
+	jcarouselElem2.parent().find(jcarouselElem.data('prev')).on('click', function (e) {
+		e.preventDefault();
+		jcarouselElem2.jcarousel('scroll', '+=5');
+	});
 
 	$('#myCarousel').carousel({
 		interval: 4000

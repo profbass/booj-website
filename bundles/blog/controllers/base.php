@@ -37,7 +37,7 @@ class Blog_Base_Controller extends Controller {
         
         $this->view_arguments['current_uri'] = Request::uri();
         $this->view_arguments['page_data'] = Menuitem::get_page_by_uri(str_replace('/', '', $base));
-        $this->view_arguments['popular_authors'] = Author::get_most_popular(Config::get('Blog::blog.number_popular_authors'));
+        $this->view_arguments['popular_authors'] = Author::get_most_popular(Config::get('Blog::blog.number_popular_authors'), Config::get('Blog::blog.hide_these_authors_from_sidebar'));
         $this->view_arguments['popular'] = Post::get_most_popular_posts(Config::get('Blog::blog.number_popular_posts'));
         $this->view_arguments['categories'] = Category::get_categories();
         // $this->view_arguments['tags'] = Tag::get_tags();
