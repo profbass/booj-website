@@ -69,7 +69,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </div>http://www.youtube.com/boojvideo
+                            </div>
                         </div>
                     </div>
                     <div class="span2 header-social-networks visible-desktop">
