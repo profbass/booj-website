@@ -2,6 +2,7 @@
 
 use Blog\Models\Author as Author;
 use \Laravel\Config as Config;
+use Blog\Models\Post as Post;
 
 class Blog_Author_Controller extends Blog_Base_Controller {
     
@@ -13,7 +14,9 @@ class Blog_Author_Controller extends Blog_Base_Controller {
 
     public function get_author($slug = FALSE)
     {
-        $this->view_arguments['data'] = Author::get_author_by_slug($slug, Config::get('Blog::blog.number_author_posts'));
+        $user = Author::get_author_by_slug($slug, Config::get('Blog::blog.number_author_posts'));
+        $this->view_arguments['data']['author'] = $user;
+        $this->view_arguments['data']['posts'] = Post::get_posts_by_author($user->id, 4);
         return View::make('blog::author', $this->view_arguments);
     }
 }

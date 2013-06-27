@@ -69,7 +69,7 @@ class Author extends Eloquent {
 		return FALSE;
 	}
 
-	public static function get_author_by_slug($slug = FALSE, $num_posts = 4)
+	public static function get_author_by_slug($slug = FALSE)
 	{
 		if ($slug) {
 			$key = 'blog_author_' . $slug;
@@ -81,15 +81,8 @@ class Author extends Eloquent {
 			$user = User::with('user_metadata')->where('username', '=', $slug)->first();
 			
 			if ($user) {
-				
-				$data = array(
-					'author' => $user,
-					'posts' => Post::get_posts_by_author($user->id, $num_posts)
-				); 
-
-				Cache::put($key, $data, 120);
-
-				return $data;
+				Cache::put($key, $user, 120);
+				return $user;
 			}			
 		}
 
