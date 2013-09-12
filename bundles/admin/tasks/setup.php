@@ -8,7 +8,7 @@ use Admin\Models\User as User;
 class Admin_Setup_Task {
 
 	/**
-	 * php artisan admin::setup user First Last username email password
+	 * php artisan admin::setup:user First Last username email password
 	 */
 	public function user($arguments)
 	{
