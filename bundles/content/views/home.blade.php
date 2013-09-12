@@ -24,8 +24,11 @@
 	<div id="scrolling-pages">
 		<? if (!empty($content_sections)): ?>
 			<? foreach($content_sections as $title => $obj): ?>
+			@if ($obj)
+
 				<div id="<? if ($title == '/') echo 'home'; else echo strtolower($title);?>-section" class="scrolling-pages-section">
 					<div class="container">
+
 						<? if (!empty($obj->cmspage)): ?>
 							<?=$obj->cmspage->content;?>
 						<? endif; ?>
@@ -58,6 +61,7 @@
 						@endif
 					</div>
 				</div>
+				@endif
 			<? endforeach; ?>
 		<? endif; ?>
 	</div>
