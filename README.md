@@ -18,7 +18,11 @@ Whenever we do a push that involves updated css of js files make sure you update
 
 ##Laravel 3 Documentation
 
-	http://three.laravel.com/docs
+[http://three.laravel.com/docs](http://three.laravel.com/docs).
 
+##Forking the Repo
 
-#Forking the Repo
+* Create your own github account. 
+* Open up the repo on booj and click the fork button. 
+* Clone the fork to your computer
+
