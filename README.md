@@ -26,3 +26,7 @@ Whenever we do a push that involves updated css of js files make sure you update
 * Open up the repo on booj and click the fork button. 
 * Clone the fork to your computer
 
+##Issuing Pull Request
+* Got to your repo and click the issue pull request button. 
+* Write a comment and issue it.
+* Contact somebody who can do a push to the live site and have them merge the pull request and then push to live
