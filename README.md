@@ -26,6 +26,16 @@ Whenever we do a push that involves updated css of js files make sure you update
 * Open up the repo on booj and click the fork button. 
 * Clone the fork to your computer
 
+##Adding Upstream Remote (keeps your branch up to date with master, only run once)
+
+	cd booj-website
+	git remote add upstream git@github.com:ActiveWebsite/booj-website.git
+
+##Updating your Branch
+
+	git fetch upstream
+	git merge upstream/master
+
 ##Issuing Pull Request
 * Got to your repo and click the issue pull request button. 
 * Write a comment and issue it.
