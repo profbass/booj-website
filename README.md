@@ -29,4 +29,4 @@ Whenever we do a push that involves updated css of js files make sure you update
 ##Issuing Pull Request
 * Got to your repo and click the issue pull request button. 
 * Write a comment and issue it.
-* Contact somebody who can do a push to the live site and have them merge the pull request and then push to live
+* Contact somebody who can do a push to the live site and have them merge the pull request and then push to live.
