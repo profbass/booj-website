@@ -42,7 +42,7 @@ return array(
 	|
 	*/
 
-	'password' => 'password',
+	'password' => 'somethingsecret',
 
 	/*
 	|--------------------------------------------------------------------------
