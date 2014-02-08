@@ -3,6 +3,7 @@ Route::controller(array(
 	'blog::home',
 ));
 
+
 Route::any('blog/search', 'blog::post@search');
 Route::any('blog/subscribe', 'blog::rss@subscribe_email');
 
@@ -17,7 +18,10 @@ Route::get('blog/tags/(:any)', 'blog::tag@index');
 Route::get('blog/authors', 'blog::author@index');
 Route::get('blog/authors/(:any)', 'blog::author@author');
 
+Route::post('blog/notifications/newComment/(:num)', 'blog::notifications@new_comment');
+
 Route::get('blog/(:any)', 'blog::post@index');
+
 
 
 /* admin blog base route */

@@ -156,6 +156,20 @@ var disqus_url = '<?=$action_urls['domain'];?><?=$action_urls['blog']; ?>/<?=$da
     dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 })();
+var disqus_config = function() {
+	this.callbacks.onNewComment = [function(comment) { 
+		$.ajax({
+			type: 'POST',
+			url: "blog/notifications/newComment/" + disqus_identifier,
+			data: {
+				comment: comment.id
+			}
+		});
+	}];
+};
+
+
+
 </script>
 <? endif; ?>
 @endsection
