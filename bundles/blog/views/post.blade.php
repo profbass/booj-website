@@ -167,9 +167,6 @@ var disqus_config = function() {
 		});
 	}];
 };
-
-
-
 </script>
 <? endif; ?>
 @endsection
