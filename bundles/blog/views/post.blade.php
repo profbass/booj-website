@@ -160,7 +160,7 @@ var disqus_config = function() {
 	this.callbacks.onNewComment = [function(comment) { 
 		$.ajax({
 			type: 'POST',
-			url: "blog/notifications/newComment/" + disqus_identifier,
+			url: "/blog/notifications/newComment/" + disqus_identifier,
 			data: {
 				comment: comment.id
 			}

@@ -1,22 +1,26 @@
 <?php
 use Blog\Models\Post as Post;
-use Blog\Models\Author as Author;
-
 use \Laravel\Config as Config;
 
 class Blog_Notifications_Controller extends Blog_Base_Controller {
     
-    public function new_comment($post_id)
-    {
+    public function post_new_comment($post_id)
+    {       
         $disqusApiSecret = Config::get('Blog::blog.disgus_key');; 
 
-        $commentId = $_POST['comment'];
+        $commentId = isset($_POST['comment']) ? $_POST['comment'] : false;
 
         $postId = $post_id;
 
         $post = Post::with(array('user'))->where('id', '=', $postId)->first();
 
         $postAuthor = $post->user->email; 
+
+        if ($commentId === false || strlen($postAuthor) < 4) {
+            return Response::error('500');
+        }
+
+        $postAuthor = 'james@booj.com';
 
         $session = curl_init('http://disqus.com/api/3.0/posts/details.json?api_secret=' . $disqusApiSecret .'&post=' . $commentId . '&related=thread');
 
@@ -28,7 +32,9 @@ class Blog_Notifications_Controller extends Blog_Base_Controller {
 
         $results = json_decode($result);
 
-        if ($results === NULL) exit();
+        if ($results === NULL) {
+            return Response::error('500');
+        }
 
         $author = $results->response->author;
 

@@ -14,7 +14,7 @@ return array(
 	'number_popular_posts' => 4,
 	'number_popular_authors' => 5,
 	'disgus_short_name' => 'booj',
-	'disgus_key' => 'null',
+	'disgus_key' => 'IQK2YYnkY3Ia3XcYaefF750eKpor3pwhhX8zQiWzONqYuLOAusomFYldhBhCVcov',
 	'domain' => 'http://www.booj.com',
 	'hide_these_authors_from_sidebar' => array(14),
 );

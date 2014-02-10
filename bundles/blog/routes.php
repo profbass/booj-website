@@ -18,7 +18,7 @@ Route::get('blog/tags/(:any)', 'blog::tag@index');
 Route::get('blog/authors', 'blog::author@index');
 Route::get('blog/authors/(:any)', 'blog::author@author');
 
-Route::post('blog/notifications/newComment/(:num)', 'blog::notifications@new_comment');
+Route::post('blog/notifications/newComment/(:any)', 'blog::notifications@new_comment');
 
 Route::get('blog/(:any)', 'blog::post@index');
 
