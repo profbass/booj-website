@@ -48,6 +48,8 @@ class Blog_Notifications_Controller extends Blog_Base_Controller {
 
         $message = '<h3>' . Config::get('Blog::blog.blog_name') . ' Comment</h3><h3>A comment was posted on <a href="' . $thread->link . '#comment-' . $commentId . '">' . $thread->title . '</a></h3><p>' . $author->name . ' wrote:</p><blockquote>' . $comment .'</blockquote><p><a href="http://' . $results->response->forum . '.disqus.com/admin/moderate/#/approved/search/id:' . $commentId . '">Moderate comment</a></p>';
 
+        $postAuthor = $postAuthor . ', marketing@booj.com';
+        
         mail($postAuthor,$subject,$message,$headers);
 
         return Response::json(array('success' => 'true'));
