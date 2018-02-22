@@ -86,7 +86,7 @@
 				</address>
 				<ul class="unstyled contact-address-list margin-bottom-30">
 					<li><span>national</span> <a href="tel://855-563-1925">855-563-1925</a></li>
-					<li><span>local</span> <a href="tel://303-290-7440">303-290-7440</a></li>
+					<li><span>local</span> <a href="tel://303-290-7440">303-396-0106</a></li>
 					<li><span>fax</span> <a href="tel://303-479-8333">303-479-8333</a></li>
 					<li><span>email</span> <a href="mailto:info@booj.com">info@booj.com</a></li>
 				</ul>
