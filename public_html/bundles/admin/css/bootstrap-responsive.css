@@ -133,7 +133,7 @@
   .navbar-fixed-bottom .container {
     width: 1170px;
   }
-  .span12 {
+  .col-xs-12 {
     width: 1170px;
   }
   .span11 {
@@ -235,7 +235,7 @@
   .row-fluid .controls-row [class*="span"] + [class*="span"] {
     margin-left: 2.564102564102564%;
   }
-  .row-fluid .span12 {
+  .row-fluid .col-xs-12 {
     width: 100%;
     *width: 99.94680851063829%;
   }
@@ -387,9 +387,9 @@
   .controls-row [class*="span"] + [class*="span"] {
     margin-left: 30px;
   }
-  input.span12,
-  textarea.span12,
-  .uneditable-input.span12 {
+  input.col-xs-12,
+  textarea.col-xs-12,
+  .uneditable-input.col-xs-12 {
     width: 1156px;
   }
   input.span11,
@@ -483,7 +483,7 @@
   .navbar-fixed-bottom .container {
     width: 724px;
   }
-  .span12 {
+  .col-xs-12 {
     width: 724px;
   }
   .span11 {
@@ -585,7 +585,7 @@
   .row-fluid .controls-row [class*="span"] + [class*="span"] {
     margin-left: 2.7624309392265194%;
   }
-  .row-fluid .span12 {
+  .row-fluid .col-xs-12 {
     width: 100%;
     *width: 99.94680851063829%;
   }
@@ -737,9 +737,9 @@
   .controls-row [class*="span"] + [class*="span"] {
     margin-left: 20px;
   }
-  input.span12,
-  textarea.span12,
-  .uneditable-input.span12 {
+  input.col-xs-12,
+  textarea.col-xs-12,
+  .uneditable-input.col-xs-12 {
     width: 710px;
   }
   input.span11,
@@ -847,8 +847,8 @@
        -moz-box-sizing: border-box;
             box-sizing: border-box;
   }
-  .span12,
-  .row-fluid .span12 {
+  .col-xs-12,
+  .row-fluid .col-xs-12 {
     width: 100%;
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;

@@ -292,7 +292,7 @@ a:focus {
   width: 940px;
 }
 
-.span12 {
+.col-xs-12 {
   width: 940px;
 }
 
@@ -424,7 +424,7 @@ a:focus {
   margin-left: 2.127659574468085%;
 }
 
-.row-fluid .span12 {
+.row-fluid .col-xs-12 {
   width: 100%;
   *width: 99.94680851063829%;
 }
@@ -1340,9 +1340,9 @@ textarea,
   margin-left: 20px;
 }
 
-input.span12,
-textarea.span12,
-.uneditable-input.span12 {
+input.col-xs-12,
+textarea.col-xs-12,
+.uneditable-input.col-xs-12 {
   width: 926px;
 }
 
@@ -2234,8 +2234,8 @@ table th[class*="span"],
   margin-left: 0;
 }
 
-.table td.span12,
-.table th.span12 {
+.table td.col-xs-12,
+.table th.col-xs-12 {
   float: none;
   width: 924px;
   margin-left: 0;

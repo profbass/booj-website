@@ -13,15 +13,15 @@
 @endsection
 
 @section('content')
-<div class="row-fluid">
-	<div class="span9">
+<div class="row">
+	<div class="col-xs-9">
 		<? if (!empty($posts->results)): ?>
 			<? $iter = 0; $max = count($posts->results) - 1; ?>
 			<? foreach ($posts->results as $post): ?>
 				<? if ($iter === 0): ?>
 					<div class="post-landing post-landing-first white-box shadow-box">
 				<? else: ?>
-					<div class="span6 post-landing white-box shadow-box">
+					<div class="col-xs-6 post-landing white-box shadow-box">
 				<? endif; ?>
 						<div class="post-landing-photo">
 							<? if ($iter === 0): ?>
@@ -64,10 +64,10 @@
 						</div>
 					</div>
 				<? if ($iter === 0): ?>
-					<div class="row-fluid">
+					<div class="row">
 				<? else: ?>
 					<? if ($iter % 2 == 0 && $iter < $max): ?>
-						</div><div class="row-fluid">
+						</div><div class="row">
 					<? endif; ?>
 				<? endif; ?>
 				<? $iter++; ?>
@@ -76,7 +76,7 @@
 		<? endif; ?>
 		<?=$posts->links(); ?>
 	</div>
-	<div class="span3">
+	<div class="col-xs-3">
 		@include('blog::sidebar')
 	</div>
 </div>

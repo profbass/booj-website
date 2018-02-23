@@ -31,16 +31,25 @@
 
         <header class="site-header" id="scrolling-header">
             <div class="container">
-                <div class="row-fluid">
-                    <div class="span8">
-                        <div class="navbar">
-                            <div class="navbar-inner clearfix">
-                                <a href="/" class="brand"><img src="/img/booj-flame.png" alt="Booj Logo"></a>
-                                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                                    Main Menu
-                                </button>
-                                <div class="nav-collapse">
-                                    <ul class="nav" id="js-menu">
+                <div class="row">
+                    <div class="col-xs-8">
+                        
+                        <!-- Nav Top -->
+                        <nav class="navbar">
+                            <div class="container">
+                                <div class="navbar-header">
+                                    <a class="navbar-brand" href="#"><img src="/img/booj-flame.png" alt="Booj Logo"></a>
+                                    <button type="button" class="btn btn-default btn-navbar navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                                        Main Menu
+                                    </button>
+                                    <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                      <span class="icon-bar"></span>
+                                      <span class="icon-bar"></span>
+                                      <span class="icon-bar"></span>
+                                    </button> -->
+                                </div>
+                                <div class="navbar-collapse collapse">
+                                    <ul class="nav navbar-nav" id="js-menu">
                                         @if (isset($menu_items))
                                             @foreach ($menu_items as $menu_item)
                                                 <li class="<? if ( $current_uri == $menu_item->uri || ($parent_menu_item == $menu_item->uri)) { echo 'active'; } if (!empty($menu_item->children)) { echo 'dropdown'; }?>">
@@ -69,25 +78,82 @@
                                                 </li>
                                             @endforeach
                                         @endif
-                                        <li class="hidden-desktop"><a href="/contact" title="Contact us"><span>Contact Us</span></a></li>
-                                        <li class="hidden-desktop clearfix">
-                                            <a href="https://www.youtube.com/boojvideo" title="Booj YouTube Page" target="_blank" style="float:left;"><i class="bicon-white-youtube">&nbsp;</i></a>
-                                            <a href="https://www.facebook.com/boojers" title="Booj Facebook Page" target="_blank" style="float:left;"><i class="bicon-white-facebook">&nbsp;</i></a>
-                                            <a href="https://plus.google.com/107717391600262472445" title="Booj Google Plus Page" target="_blank" style="float:left;"><i class="bicon-white-google-plus">&nbsp;</i></a>
-                                            <a href="http://www.twitter.com/boojers" title="Booj Twitter Page" target="_blank" style="float:left;"><i class="bicon-white-twitter">&nbsp;</i></a>
-                                        </li>
+                                        <li class="hidden-lg"><a href="/contact" title="Contact us"><span>Contact Us</span></a></li>
                                     </ul>
                                 </div>
                             </div>
+                        </nav>
+
+
+
+                        <!--
+
+                        <div class="navbar">
+                             <div class="navbar-header">
+                                <a href="/" class="navbar-brand"><img src="/img/booj-flame.png" alt="Booj Logo"></a>
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                                  <span class="icon-bar"></span>
+                                  <span class="icon-bar"></span>
+                                  <span class="icon-bar"></span>
+                                </button>
+                            <div class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav" id="js-menu">
+                                    @if (isset($menu_items))
+                                        @foreach ($menu_items as $menu_item)
+                                            <li class="<? if ( $current_uri == $menu_item->uri || ($parent_menu_item == $menu_item->uri)) { echo 'active'; } if (!empty($menu_item->children)) { echo 'dropdown'; }?>">
+                                                @if (in_array($menu_item->uri, array('/about', '/teams', '/clients', '/events')))
+                                                    <a class="click-to-section" data-target="#<?=str_replace('/', '', $menu_item->uri);?>-section" href="#<?=str_replace('/', '', $menu_item->uri);?>-section" title="{{ $menu_item->pretty_name }}"><span>{{ $menu_item->pretty_name }}@if (!empty($menu_item->children)) <b class="caret"></b>@endif</span></a>
+                                                @elseif (in_array($menu_item->uri, array('/')))
+                                                    <a class="click-to-section" data-target="#home-section" href="#home-section" title="{{ $menu_item->pretty_name }}"><span>{{ $menu_item->pretty_name }}@if (!empty($menu_item->children)) <b class="caret"></b>@endif</span></a>
+                                                @elseif ($menu_item->controller == 'link')
+                                                    <a href="{{ $menu_item->uri }}" target="_blank" rel="nofollow" title="{{ $menu_item->pretty_name }}"><span>{{ $menu_item->pretty_name }}@if (!empty($menu_item->children)) <b class="caret"></b>@endif</span></a>
+                                                @else
+                                                    <a href="{{ $menu_item->uri }}" title="{{ $menu_item->pretty_name }}"><span>{{ $menu_item->pretty_name }}@if (!empty($menu_item->children)) <b class="caret"></b>@endif</span></a>
+                                                @endif
+                                                @if (isset($menu_item->children) && count($menu_item->children) > 0)
+                                                    <ul class="dropdown-menu">
+                                                        @foreach ($menu_item->children as $menu_item_child)
+                                                            <li<?php if($current_uri == $menu_item_child->uri) echo ' class="active"';?>>
+                                                                @if ($menu_item_child->controller == 'link')
+                                                                    <a href="{{ $menu_item_child->uri }}" title="{{ $menu_item_child->pretty_name }}" target="_blank" rel="nofollow">{{ $menu_item_child->pretty_name }}</a>
+                                                                @else
+                                                                    <a href="{{ $menu_item_child->uri }}" title="{{ $menu_item_child->pretty_name }}">{{ $menu_item_child->pretty_name }}</a>
+                                                                @endif
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            </li>
+                                        @endforeach
+                                    @endif
+                                    <li class="hidden-lg"><a href="/contact" title="Contact us"><span>Contact Us</span></a></li>
+                                    <li class="hidden-lg clearfix">
+                                        <a href="https://www.youtube.com/boojvideo" title="Booj YouTube Page" target="_blank" style="float:left;"><i class="glyphicon glyphicon-white-youtube">&nbsp;</i></a>
+                                        <a href="https://www.facebook.com/boojers" title="Booj Facebook Page" target="_blank" style="float:left;"><i class="glyphicon glyphicon-white-facebook">&nbsp;</i></a>
+                                        <a href="https://plus.google.com/107717391600262472445" title="Booj Google Plus Page" target="_blank" style="float:left;"><i class="glyphicon glyphicon-white-google-plus">&nbsp;</i></a>
+                                        <a href="http://www.twitter.com/boojers" title="Booj Twitter Page" target="_blank" style="float:left;"><i class="glyphicon glyphicon-white-twitter">&nbsp;</i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            </div>
                         </div>
+                    -->
                     </div>
-                    <div class="span2 header-social-networks visible-desktop">
-                        <a href="https://www.youtube.com/boojvideo" title="Booj YouTube Page" target="_blank"><i class="bicon-white-youtube">&nbsp;</i></a>
-                        <a href="https://www.facebook.com/boojers" title="Booj Facebook Page" target="_blank"><i class="bicon-white-facebook">&nbsp;</i></a>
-                        <a href="https://plus.google.com/107717391600262472445" title="Booj Google Plus Page" target="_blank"><i class="bicon-white-google-plus">&nbsp;</i></a>
-                        <a href="http://www.twitter.com/boojers" title="Booj Twitter Page" target="_blank"><i class="bicon-white-twitter">&nbsp;</i></a>
+                    <div class="col-xs-2 header-social-networks visible-lg">
+                        <a href="https://www.youtube.com/boojvideo" title="Booj YouTube Page" target="_blank" style="float:left;">
+                            <i class="fa fa-youtube-play fa-inverse fa-2x">&nbsp;</i>
+                        </a>
+                        <a href="https://www.facebook.com/boojers" title="Booj Facebook Page" target="_blank" style="float:left;">
+                            <i class="fa fa-facebook-square fa-inverse fa-2x">&nbsp;</i>
+                        </a>
+                        <a href="https://plus.google.com/107717391600262472445" title="Booj Google Plus Page" target="_blank" style="float:left;">
+                            <i class="fa fa-google-plus-square fa-inverse fa-2x">&nbsp;</i>
+                        </a>
+                        <a href="http://www.twitter.com/boojers" title="Booj Twitter Page" target="_blank" style="float:left;">
+                            <i class="fa fa-twitter fa-inverse fa-2x">&nbsp;</i>
+                        </a>
                     </div>
-                    <div class="span2 header-contact visible-desktop">
+                    <div class="col-xs-2 header-contact visible-lg">
                         <a href="/contact" title="Contact us">Contact Us</a>     
                     </div>
                 </div>

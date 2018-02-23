@@ -16,11 +16,11 @@ if (typeof CKEDITOR === 'object') {
 @endsection
 
 @section('content')
-<div class="row-fluid">
-	<div class="span3">
+<div class="row">
+	<div class="col-xs-3">
 		@include('blog::admin.sidenav')
 	</div>
-    <div class="span9">
+    <div class="col-xs-9">
         <h2>Create Blog Post</h2>
         <hr>
         <?=Form::open_for_files($controller_alias . '/store', null, array('class' => 'form-horizontal')); ?>
@@ -29,7 +29,7 @@ if (typeof CKEDITOR === 'object') {
                 <div class="control-group{{ isset($errors) && $errors->has('title') ? ' error' : '' }}">
                     <?=Form::label('title', 'Title *', array('class' => 'control-label')); ?>
                     <div class="controls">
-                        <?=Form::text('title', Input::old('title'), array('class' => 'span6', 'required' => 'required', 'placeholder' => 'Enter Title')); ?>
+                        <?=Form::text('title', Input::old('title'), array('class' => 'col-xs-6', 'required' => 'required', 'placeholder' => 'Enter Title')); ?>
                         @if ($errors && $errors->has('title'))
                             <span class="help-inline">This field is required</span>
                         @endif
@@ -39,7 +39,7 @@ if (typeof CKEDITOR === 'object') {
                 <div class="control-group{{ isset($errors) && $errors->has('short_title') ? ' error' : '' }}">
                     <?=Form::label('short_title', 'Short Title *', array('class' => 'control-label')); ?>
                     <div class="controls">
-                        <?=Form::text('short_title', Input::old('short_title'), array('class' => 'span6', 'required' => 'required', 'placeholder' => 'Enter Short Title')); ?>
+                        <?=Form::text('short_title', Input::old('short_title'), array('class' => 'col-xs-6', 'required' => 'required', 'placeholder' => 'Enter Short Title')); ?>
                         @if ($errors && $errors->has('short_title'))
                             <span class="help-inline">This field is required</span>
                         @endif
@@ -51,7 +51,7 @@ if (typeof CKEDITOR === 'object') {
                     <div class="controls">
                         <?
                         $select_options = array('1' => 'Published', '0' => 'Pending');
-                        echo Form::select('is_published', $select_options, Input::old('is_published') ? Input::old('is_published') : 1, array('class' => 'span6', 'required' => 'required'));
+                        echo Form::select('is_published', $select_options, Input::old('is_published') ? Input::old('is_published') : 1, array('class' => 'col-xs-6', 'required' => 'required'));
                         ?>
                         @if ($errors && $errors->has('is_published'))
                             <span class="help-inline">This field is required</span>
@@ -62,7 +62,7 @@ if (typeof CKEDITOR === 'object') {
                 <div class="control-group{{ isset($errors) && $errors->has('created_at') ? ' error' : '' }}">
                     <?=Form::label('created_at', 'Published Date *', array('class' => 'control-label')); ?>
                     <div class="controls">
-                        <?=Form::text('created_at', Input::old('created_at') ? Input::old('created_at') : date('Y-m-d', time()), array('class' => 'span6 date-widget', 'required' => 'required', 'placeholder' => 'Enter Date Published')); ?>
+                        <?=Form::text('created_at', Input::old('created_at') ? Input::old('created_at') : date('Y-m-d', time()), array('class' => 'col-xs-6 date-widget', 'required' => 'required', 'placeholder' => 'Enter Date Published')); ?>
                         @if ($errors && $errors->has('created_at'))
                             <span class="help-inline">This field is required</span>
                         @endif
@@ -73,7 +73,7 @@ if (typeof CKEDITOR === 'object') {
                 <div class="control-group{{ isset($errors) && $errors->has('event_date') ? ' error' : '' }}">
                     <?=Form::label('event_date', 'Event Date', array('class' => 'control-label')); ?>
                     <div class="controls">
-                        <?=Form::text('event_date', Input::old('event_date') ? Input::old('event_date') : date('Y-m-d', time()), array('class' => 'span6 date-widget', 'placeholder' => 'Enter Event Date')); ?>
+                        <?=Form::text('event_date', Input::old('event_date') ? Input::old('event_date') : date('Y-m-d', time()), array('class' => 'col-xs-6 date-widget', 'placeholder' => 'Enter Event Date')); ?>
                         @if ($errors && $errors->has('event_date'))
                             <span class="help-inline">This field is required</span>
                         @endif
@@ -106,7 +106,7 @@ if (typeof CKEDITOR === 'object') {
                 <div class="control-group">
                     <?=Form::label('content', 'Content', array('class' => 'control-label')); ?>
                     <div class="controls">
-                        <?=Form::textarea('content', Input::old('content'), array('cols' => '80', 'rows' => '10', 'id' => 'editor1', 'class' => 'span12', 'style' => 'height: 400px;', 'placeholder' => 'Enter Content'));?>
+                        <?=Form::textarea('content', Input::old('content'), array('cols' => '80', 'rows' => '10', 'id' => 'editor1', 'class' => 'col-xs-12', 'style' => 'height: 400px;', 'placeholder' => 'Enter Content'));?>
                         @if ($errors && $errors->has('content'))
                             <span class="help-block">This field is required</span>
                         @endif
@@ -129,7 +129,7 @@ if (typeof CKEDITOR === 'object') {
                                 $select_options[$obj->id] = $obj->first_name . ' ' . $obj->last_name;
                             }
                         }
-                        echo Form::select('user_id', $select_options, Input::old('user_id') ? Input::old('user_id') : $curr_user_id, array('class' => 'span6', 'required' => 'required'));
+                        echo Form::select('user_id', $select_options, Input::old('user_id') ? Input::old('user_id') : $curr_user_id, array('class' => 'col-xs-6', 'required' => 'required'));
                         ?>
                         @if ($errors && $errors->has('user_id'))
                             <span class="help-inline">This field is required</span>
@@ -147,7 +147,7 @@ if (typeof CKEDITOR === 'object') {
                                 $select_options[$obj->id] = $obj->title;
                             }
                         }
-                        echo Form::select('category_id', $select_options, Input::old('category_id'), array('class' => 'span6', 'required' => 'required'));
+                        echo Form::select('category_id', $select_options, Input::old('category_id'), array('class' => 'col-xs-6', 'required' => 'required'));
                         ?>
                         @if ($errors && $errors->has('category_id'))
                             <span class="help-inline">This field is required</span>
@@ -165,7 +165,7 @@ if (typeof CKEDITOR === 'object') {
                                 $select_options[$obj->id] = $obj->title;
                             }
                         }
-                        echo Form::select('tag_ids[]', $select_options, Input::old('tag_ids[]'), array('class' => 'span6', 'multiple' => 'multiple'));
+                        echo Form::select('tag_ids[]', $select_options, Input::old('tag_ids[]'), array('class' => 'col-xs-6', 'multiple' => 'multiple'));
                         ?>
                         @if ($errors && $errors->has('tag_ids[]'))
                             <span class="help-inline">This field is required</span>
@@ -174,7 +174,7 @@ if (typeof CKEDITOR === 'object') {
                 </div>
 
                 <div class="form-actions">
-                    <button type="submit" name="submit" value="1" class="btn btn-large btn-success">Create</button>
+                    <button type="submit" name="submit" value="1" class="btn btn-default btn btn-default-large btn btn-default-success">Create</button>
                 </div>
                 
                 <?=Form::token(); ?>

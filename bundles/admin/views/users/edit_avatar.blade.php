@@ -5,11 +5,11 @@
 @endsection
 
 @section('content')	
-<div class="row-fluid">
-	<div class="span3">
+<div class="row">
+	<div class="col-xs-3">
 		@include('admin::users.sidenav')
 	</div>
-    <div class="span9">
+    <div class="col-xs-9">
         <h2>Edit Avatar for <?=$user->first_name . ' ' . $user->last_name; ?></h2>
         <hr>
         <?=Form::open_for_files($controller_alias . '/update_avatar/' . $user->id, null, array('class' => 'form-horizontal')); ?>
@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="form-actions">
-                    <button type="submit" name="submit" value="main-photo" class="btn btn-large btn-success">Change Avatar</button>
+                    <button type="submit" name="submit" value="main-photo" class="btn btn-default btn btn-default-large btn btn-default-success">Change Avatar</button>
                 </div>
 
                 <?=Form::token(); ?>

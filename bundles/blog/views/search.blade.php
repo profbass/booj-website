@@ -17,8 +17,8 @@
 @endsection
 
 @section('content')
-<div class="row-fluid">
-	<div class="span9">
+<div class="row">
+	<div class="col-xs-9">
 		<h1 class="title-bar margin-bottom-30">Search Results</h1>
 		<? if (!empty($data['term'])): ?>
 			<p>Results for <em><?=$data['term'];?></em></p>
@@ -27,13 +27,13 @@
 			<ul class="unstyled">
 				<? foreach ($data['posts']->results as $post): ?>
 					<li>
-						<div class="row-fluid">
-							<div class="span2">
+						<div class="row">
+							<div class="col-xs-2">
 								<? if (!empty($post->user) && !empty($post->user->user_metadata->avatar)): ?>
 									<img class="gray-border" src="<?=$post->user->user_metadata->avatar; ?>" alt="" class="pull-right">
 								<? endif; ?>
 							</div>
-							<div class="span10">
+							<div class="col-xs-10">
 								<a href="<?=$action_urls['blog'];?>/<?=$post->slug;?>"><?=$post->title;?></a>
 								<p><?=$post->truncated_content();?></p>
 							</div>
@@ -47,7 +47,7 @@
 			<div class="alert alert-error alert-block">No Results Found</div>
 		<? endif; ?>
 	</div>
-	<div class="span3">
+	<div class="col-xs-3">
 		@include('blog::sidebar')
 	</div>
 </div>

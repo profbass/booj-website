@@ -21,12 +21,14 @@ module.exports = function(grunt) {
         src: [
           'public_html/js/lib/jquery.js',
           'public_html/js/lib/mustache.js',
-          'public_html/js/twitter-bootstrap/bootstrap-collapse.js', 
-          'public_html/js/twitter-bootstrap/bootstrap-carousel.js',
-          'public_html/js/twitter-bootstrap/bootstrap-transition.js', 
+          'vendor/bootstrap-3/js/collapse.js', 
+          'vendor/bootstrap-3/js/carousel.js',
+          'vendor/bootstrap-3/js/transition.js', 
+          'vendor/bootstrap-3/js/modal.js', 
           'public_html/js/hover_intent.js', 
           'public_html/js/jquery.menu.js', 
-          'public_html/js/application.js'
+          'public_html/js/application.js',
+          'public_html/js/carousel.js'
         ],
         dest: 'public_html/dist/app.min.js'
       },
@@ -44,14 +46,14 @@ module.exports = function(grunt) {
           yuicompress: true
         },
         files: {
-          'public_html/dist/style.min.css': ['less/style.less']
+          'public_html/dist/style.min.css': ['application/less/style.less']
         }
       }
     },
 
     watch: {
       less: {
-        files: 'less/**.less',
+        files: 'application/less/**.less',
         tasks: ['less'],
         options: {
           interrupt: true

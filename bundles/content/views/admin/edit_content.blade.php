@@ -16,11 +16,11 @@ if (typeof CKEDITOR === 'object') {
 @endsection
 
 @section('content')
-<div class="row-fluid">
-	<div class="span3">
+<div class="row">
+	<div class="col-xs-3">
 		@include('content::admin.sidenav')
 	</div>
-    <div class="span9">
+    <div class="col-xs-9">
     	<h2>Editing Content For "<?=$page->pretty_name; ?>"</h2>
 		<ul class="nav nav-tabs">
 			<li><a href="<?=$controller_alias;?>/edit/<?=$page->id;?>">Edit Page Information</a></li>
@@ -33,7 +33,7 @@ if (typeof CKEDITOR === 'object') {
 				<div class="control-group">
 					<?=Form::label('content', 'Content', array('class' => 'control-label')); ?>
 					<div class="controls">
-						<?=Form::textarea('content', Input::old('content') ? Input::old('content') : $page->cmspage->content, array('cols' => '80', 'rows' => '10', 'class' => 'span12', 'id' => 'editor1', 'style' => 'height: 400px;', 'placeholder' => 'Enter Content'));?>
+						<?=Form::textarea('content', Input::old('content') ? Input::old('content') : $page->cmspage->content, array('cols' => '80', 'rows' => '10', 'class' => 'col-xs-12', 'id' => 'editor1', 'style' => 'height: 400px;', 'placeholder' => 'Enter Content'));?>
 						@if ($errors && $errors->has('content'))
 							<span class="help-block">This field is required</span>
 						@endif
@@ -49,7 +49,7 @@ if (typeof CKEDITOR === 'object') {
 				<div class="control-group">
 					<?=Form::label('scripts', 'Scripts', array('class' => 'control-label')); ?>
 					<div class="controls">
-						<?=Form::textarea('scripts', Input::old('scripts') ? Input::old('scripts') : $page->cmspage->scripts, array('class' => 'span12', 'style' => 'height: 200px;', 'placeholder' => 'Enter Javascript')); ?>
+						<?=Form::textarea('scripts', Input::old('scripts') ? Input::old('scripts') : $page->cmspage->scripts, array('class' => 'col-xs-12', 'style' => 'height: 200px;', 'placeholder' => 'Enter Javascript')); ?>
 						<span class="help-block">You may enter any javascript or javascript includes in this section. Make sure you use <strong>&lt;script&gt;...&lt;/script&gt;</strong> tags</span>
 					</div>
 				</div>
@@ -57,13 +57,13 @@ if (typeof CKEDITOR === 'object') {
 				<div class="control-group">
 					<?=Form::label('styles', 'Styles', array('class' => 'control-label')); ?>
 					<div class="controls">
-						<?=Form::textarea('styles', Input::old('styles') ? Input::old('styles') : $page->cmspage->styles, array('class' => 'span12', 'style' => 'height: 200px;', 'placeholder' => 'Enter Any CSS'));?>
+						<?=Form::textarea('styles', Input::old('styles') ? Input::old('styles') : $page->cmspage->styles, array('class' => 'col-xs-12', 'style' => 'height: 200px;', 'placeholder' => 'Enter Any CSS'));?>
 						<span class="help-block">You may enter any css or css includes in this section. Make sure you use <strong>&lt;style&gt;...&lt;/style&gt;</strong> tags</span>
 					</div>
 				</div>
 
 				<div class="form-actions">
-					<button type="submit" name="submit" value="1" class="btn btn-large btn-success">Save Changes</button>
+					<button type="submit" name="submit" value="1" class="btn btn-default btn btn-default-large btn btn-default-success">Save Changes</button>
 				</div>
 				
 				<?=Form::token(); ?>

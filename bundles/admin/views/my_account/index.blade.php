@@ -5,11 +5,11 @@
 @endsection
 
 @section('content')	
-<div class="row-fluid">
-    <div class="span3">
+<div class="row">
+    <div class="col-xs-3">
         @include('admin::my_account.sidenav')
     </div>
-    <div class="span9">
+    <div class="col-xs-9">
     	<h2>My Account</h2>
     	<hr>
     	<table class="table table-striped">
@@ -72,7 +72,7 @@
                 ?>
     		</tbody>
     	</table>
-    	<a href="<?=$controller_alias;?>/edit" class="btn btn-primary">Edit This Info</a>
+    	<a href="<?=$controller_alias;?>/edit" class="btn btn-default btn btn-default-primary">Edit This Info</a>
 
     	<hr>
     	<h3>Change Password</h3>
@@ -85,7 +85,7 @@
 						<?php echo Form::label('password', 'Password *', array('class' => 'control-label')); ?>
 						<div class="controls">
 							<?php
-								echo Form::password('password', array('class' => 'span6', 'required' => 'required', 'placeholder' => 'Enter New Password'));
+								echo Form::password('password', array('class' => 'col-xs-6', 'required' => 'required', 'placeholder' => 'Enter New Password'));
 							?>
 							@if ($errors && $errors->has('password'))
 								<span class="help-inline">This field is required</span>
@@ -95,7 +95,7 @@
 				</div>
 
 				<div class="form-actions">
-					<button type="submit" name="submit" value="1" class="btn btn-success">Change Password</button>
+					<button type="submit" name="submit" value="1" class="btn btn-default btn btn-default-success">Change Password</button>
 				</div>
 				<?php echo Form::token(); ?>
 			</fieldset>

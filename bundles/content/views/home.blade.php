@@ -55,8 +55,8 @@
 										<? endforeach; ?>
 									</ul>
 								</div>
-						        <a href="#" class="left carousel-control carousel-next">&lsaquo;</a>
-						        <a href="#" class="right carousel-control carousel-prev">&rsaquo;</a>
+						        <a href="#" class="left carousel-control carousel-next"><i class="fa fa-chevron-left fa-1x fa-inverse"></i></a>
+						        <a href="#" class="right carousel-control carousel-prev"><i class="fa fa-chevron-right fa-1x fa-inverse"></i></a>
 							</div>
 						@endif
 					</div>

@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-<div class="row-fluid">
-    <div class="span12">
+<div class="row">
+    <div class="col-xs-12">
  		<h1>Admin Dashboard</h1>
  		
  		<p>Welcome to your admin panel. Use the navigation at the top to manage your site.</p>

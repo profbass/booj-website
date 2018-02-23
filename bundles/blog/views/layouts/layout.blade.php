@@ -25,22 +25,22 @@
     <body class="blog-layout">
         <header id="blog-header">
             <div class="container">
-                <div class="row-fluid">
-                    <div class="span5 clearfix">
+                <div class="row">
+                    <div class="col-xs-5 clearfix">
                         <a href="/" class="blog-flame pull-left"><img src="/img/booj-flame.png" alt="Booj Logo"></a>
-                        <a href="/" class="blog-back-home pull-left"><i class="bicon-previous"></i> Back to booj</a>
+                        <a href="/" class="blog-back-home pull-left"><i class="glyphicon glyphicon-previous"></i> Back to booj</a>
                     </div>
-                    <div class="span4 blog-header-social clearfix hidden-phone">
-                        <a href="https://www.youtube.com/boojvideo" title="Booj YouTube Page" target="_blank"><i class="bicon-white-youtube">&nbsp;</i></a>
-                        <a href="https://www.facebook.com/boojers" title="Booj Facebook Page" target="_blank"><i class="bicon-white-facebook">&nbsp;</i></a>
-                        <a href="https://plus.google.com/107717391600262472445" title="Booj Google Plus Page" target="_blank"><i class="bicon-white-google-plus">&nbsp;</i></a>
-                        <a href="http://www.twitter.com/boojers" title="Booj Twitter Page" target="_blank"><i class="bicon-white-twitter">&nbsp;</i></a>
+                    <div class="col-xs-4 blog-header-social clearfix hidden-sm">
+                        <a href="https://www.youtube.com/boojvideo" title="Booj YouTube Page" target="_blank"><i class="glyphicon glyphicon-white-youtube">&nbsp;</i></a>
+                        <a href="https://www.facebook.com/boojers" title="Booj Facebook Page" target="_blank"><i class="glyphicon glyphicon-white-facebook">&nbsp;</i></a>
+                        <a href="https://plus.google.com/107717391600262472445" title="Booj Google Plus Page" target="_blank"><i class="glyphicon glyphicon-white-google-plus">&nbsp;</i></a>
+                        <a href="http://www.twitter.com/boojers" title="Booj Twitter Page" target="_blank"><i class="glyphicon glyphicon-white-twitter">&nbsp;</i></a>
                     </div>
-                    <div class="span3 blog-header-search">
+                    <div class="col-xs-3 blog-header-search">
                         <?=Form::open('/blog/search', null, array('id' => 'blog-search')); ?>
-                            <div class="input-append">
+                            <div class="input-group">
                                 <input type="text" name="term" value="" placeholder="search blog here">
-                                <button class="btn btn-white" type="submit"><i class="bicon-red-spy"></i></button>
+                                <button class="btn btn-default btn btn-default-white" type="submit"><i class="glyphicon glyphicon-red-spy"></i></button>
                             </div>
                             <?=Form::token(); ?>
                         <?=Form::close(); ?>       
@@ -53,7 +53,7 @@
             <nav class="navbar">
                 <div class="navbar-inner">
                     <div class="container">
-                        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <button type="button" class="btn btn-default btn btn-default-navbar" data-toggle="collapse" data-target=".nav-collapse">
                             Blog Menu
                         </button>
                         <div class="nav-collapse">
@@ -66,10 +66,10 @@
                                     <? endforeach; ?>
                                 @endif
                                 <li class="visible-phone clearfix">
-                                    <a href="https://www.youtube.com/boojvideo" title="Booj YouTube Page" target="_blank" style="float:left;"><i class="bicon-gray-youtube">&nbsp;</i></a>
-                                    <a href="https://www.facebook.com/boojers" title="Booj Facebook Page" target="_blank" style="float:left;"><i class="bicon-gray-facebook">&nbsp;</i></a>
-                                    <a href="https://plus.google.com/107717391600262472445" title="Booj Google Plus Page" target="_blank" style="float:left;"><i class="bicon-gray-google-plus">&nbsp;</i></a>
-                                    <a href="http://www.twitter.com/boojers" title="Booj Twitter Page" target="_blank" style="float:left;"><i class="bicon-gray-twitter">&nbsp;</i></a>
+                                    <a href="https://www.youtube.com/boojvideo" title="Booj YouTube Page" target="_blank" style="float:left;"><i class="glyphicon glyphicon-gray-youtube">&nbsp;</i></a>
+                                    <a href="https://www.facebook.com/boojers" title="Booj Facebook Page" target="_blank" style="float:left;"><i class="glyphicon glyphicon-gray-facebook">&nbsp;</i></a>
+                                    <a href="https://plus.google.com/107717391600262472445" title="Booj Google Plus Page" target="_blank" style="float:left;"><i class="glyphicon glyphicon-gray-google-plus">&nbsp;</i></a>
+                                    <a href="http://www.twitter.com/boojers" title="Booj Twitter Page" target="_blank" style="float:left;"><i class="glyphicon glyphicon-gray-twitter">&nbsp;</i></a>
                                 </li>
                             </ul>
                         </div>
@@ -85,7 +85,7 @@
 
         @include('content::footers.footer')
 
-        <span id="scroll-to-top" class="hidden"><i class="bicon-scroll-up"></i></span>
+        <span id="scroll-to-top" class="hidden"><i class="glyphicon glyphicon-scroll-up"></i></span>
         
         <div id="fb-root"></div>
 

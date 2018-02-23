@@ -60,7 +60,7 @@ class Content_Home_Controller extends Content_Base_Controller {
 
 		$this->view_arguments['events_data'] = \Blog\Models\Tag::get_posts_in_tag_by_slug('events', 6);
 
-		$get_pages = array('/', 'about', 'teams', 'clients', 'events');
+		$get_pages = array('/', 'about', 'news', 'teams', 'clients', 'events');
 		$content_sections = array();
 		$temp_js = '';
 		$temp_css = '';

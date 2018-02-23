@@ -19,12 +19,12 @@
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top" id="admin-header">
             <div class="navbar-inner">
-                <div class="container-fluid">
+                <div class="container">
                     <a href="/admin" class="brand"><img src="/bundles/admin/img/admin_logo.png" alt="Admin Logo"></a>
                 </div>
             </div>
         </nav>
-        <div class="container-fluid" id="admin-container">            
+        <div class="container" id="admin-container">            
             <?php 
                 $success_message = Session::get('success_message');
                 if ($success_message) {
@@ -44,33 +44,33 @@
                     }
                 }
             ?>
-			<div class="row-fluid">
-			    <div class="span3" style="float:none; margin: 0 auto;">
+			<div class="row">
+			    <div class="col-xs-3" style="float:none; margin: 0 auto;">
 			 		<h1>Login</h1>
 
 					<?=Form::open(null, null, array('class' => 'form-horizontal') ); ?>
 						
 						<div class="control-group {{ isset($errors) && is_object($errors) && $errors->has('username') ? 'error' : '' }}">
-							<?=Form::text('username', Input::old('username'), array('class' => 'span12', 'placeholder' => 'Enter Email Address', 'required' => 'required'));?>
+							<?=Form::text('username', Input::old('username'), array('class' => 'col-xs-12', 'placeholder' => 'Enter Email Address', 'required' => 'required'));?>
 							@if (isset($errors) && is_object($errors) && $errors->has('username'))
 								<span class="help-block">This field is required</span>
 							@endif
 						</div>
 
 						<div class="control-group {{ isset($errors) && is_object($errors) && $errors->has('password') ? 'error' : '' }}">
-							<?=Form::password('password', array('class' => 'span12', 'placeholder' => 'Enter Password', 'required' => 'required'));?>
+							<?=Form::password('password', array('class' => 'col-xs-12', 'placeholder' => 'Enter Password', 'required' => 'required'));?>
 							@if (isset($errors) && is_object($errors) && $errors->has('password'))
 								<span class="help-block">This field is required</span>
 							@endif
 						</div>
 
 						<div class="control-group">
-                            <div class="row-fluid">
-                                <div class="span6">
+                            <div class="row">
+                                <div class="col-xs-6">
                                     <label class="checkbox"><input type="checkbox" name="remember" value="1"> Remember Me</label>
                                 </div>
-                                <div class="span6">
-                                    <input type="submit" name="Login" value="Login" class="btn btn-primary btn-large pull-right">
+                                <div class="col-xs-6">
+                                    <input type="submit" name="Login" value="Login" class="btn btn-default btn btn-default-primary btn btn-default-large pull-right">
                                 </div>
                             </div>
 						</div>

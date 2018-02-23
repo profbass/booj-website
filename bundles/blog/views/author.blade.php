@@ -17,8 +17,8 @@
 @endsection
 
 @section('content')
-<div class="row-fluid">
-	<div class="span9">
+<div class="row">
+	<div class="col-xs-9">
 		<div class="title-bar margin-bottom-30">
 			@if (!empty($data['author']))
 				<h1 class="caps"><?=$data['author']->first_name; ?> <?=$data['author']->last_name; ?></h1>
@@ -31,9 +31,9 @@
 				<img class="author-bio-img" src="<?=$data['author']->user_metadata->avatar;?>" alt="photo of <?=$data['author']->first_name; ?> <?=$data['author']->last_name; ?>">
 				<span class="block author-bio-title"><?=$data['author']->user_metadata->title; ?></span>
 				<span class="block">
-					<? if (!empty($data['author']->user_metadata->facebook_id)) echo '<a href="' . $action_urls['facebook'] . $data['author']->user_metadata->facebook_id . '" rel="nofollow" target="_blank" title="My Facebook Page"><i class="bicon-red-facebook">Facebook</i></a>'; ?>
-					<? if (!empty($data['author']->user_metadata->google_plus_id)) echo '<a href="' . $action_urls['google_plus'] . $data['author']->user_metadata->google_plus_id . '" rel="nofollow" target="_blank" title="My Google Plus Page"><i class="bicon-red-google-plus">Google Plus</i></a>'; ?>
-					<? if (!empty($data['author']->user_metadata->twitter_handle)) echo '<a href="' . $action_urls['twitter'] . $data['author']->user_metadata->twitter_handle . '" rel="nofollow" target="_blank" title="My Twitter Page"><i class="bicon-red-twitter">Twitter</i></a>'; ?>
+					<? if (!empty($data['author']->user_metadata->facebook_id)) echo '<a href="' . $action_urls['facebook'] . $data['author']->user_metadata->facebook_id . '" rel="nofollow" target="_blank" title="My Facebook Page"><i class="glyphicon glyphicon-red-facebook">Facebook</i></a>'; ?>
+					<? if (!empty($data['author']->user_metadata->google_plus_id)) echo '<a href="' . $action_urls['google_plus'] . $data['author']->user_metadata->google_plus_id . '" rel="nofollow" target="_blank" title="My Google Plus Page"><i class="glyphicon glyphicon-red-google-plus">Google Plus</i></a>'; ?>
+					<? if (!empty($data['author']->user_metadata->twitter_handle)) echo '<a href="' . $action_urls['twitter'] . $data['author']->user_metadata->twitter_handle . '" rel="nofollow" target="_blank" title="My Twitter Page"><i class="glyphicon glyphicon-red-twitter">Twitter</i></a>'; ?>
 				</span>
 				<span class="block author-bio-spacer">&nbsp;</span>
 				<?=$data['author']->user_metadata->bio;?>
@@ -41,10 +41,10 @@
 
 			@if (!empty($data['posts']->results))
 				<h2 class="font-30 margin-bottom-15">My Previous Posts</h2>
-				<div class="row-fluid">
+				<div class="row">
 					<? $iter = 0; $max = count($data['posts']->results) - 1; ?>
 					<? foreach ($data['posts']->results as $post): ?>
-						<div class="span6 post-landing shadow-box white-box">
+						<div class="col-xs-6 post-landing shadow-box white-box">
 							<div class="post-landing-photo">
 								<a href="<?=$action_urls['blog'];?>/<?=$post->slug;?>" title="<?=$post->short_title;?>"><img src="<?=$post->small_photo;?>" alt="<?=$post->short_title;?>"></a>
 								<? if (!empty($post->category)): ?>
@@ -72,7 +72,7 @@
 							</div>
 						</div>
 						<? if ($iter % 2 == 1 && $iter < $max): ?>
-							</div><div class="row-fluid">
+							</div><div class="row">
 						<? endif; ?>
 						<? $iter++; ?>
 					<? endforeach; ?>
@@ -83,7 +83,7 @@
 			<div class="alert alert-block alert-error">Contributor not found.</div>
 		@endif
 	</div>
-	<div class="span3">
+	<div class="col-xs-3">
 		@include('blog::sidebar')
 	</div>
 </div>

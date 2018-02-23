@@ -6,13 +6,13 @@
 
 
 @section('content')
-<div class="row-fluid">
-	<div class="span9">
+<div class="row">
+	<div class="col-xs-9">
 		<div class="title-bar margin-bottom-30">
 			<h1>Subscribe By Email</h1>
 		</div>
 	</div>
-	<div class="span3">
+	<div class="col-xs-3">
 		@include('blog::sidebar')
 	</div>
 </div>

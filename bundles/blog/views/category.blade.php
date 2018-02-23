@@ -17,8 +17,8 @@
 @endsection
 
 @section('content')
-<div class="row-fluid">
-	<div class="span9">
+<div class="row">
+	<div class="col-xs-9">
 		<div class="title-bar margin-bottom-30">
 			<h1>
 				@if (!empty($data['category']))
@@ -30,10 +30,10 @@
 		</div>
 		@if (!empty($data))
 			<? if (!empty($data['posts']->results)): ?>
-				<div class="row-fluid">
+				<div class="row">
 					<? $iter = 0; $max = count($data['posts']->results) - 1; ?>
 					<? foreach ($data['posts']->results as $post): ?>
-						<div class="span6 post-landing shadow-box white-box">
+						<div class="col-xs-6 post-landing shadow-box white-box">
 							<div class="post-landing-photo">
 								<a href="<?=$action_urls['blog'];?>/<?=$post->slug;?>" title="<?=$post->short_title;?>"><img src="<?=$post->small_photo;?>" alt="<?=$post->short_title;?>"></a>
 								<? if (!empty($post->category)): ?>
@@ -62,7 +62,7 @@
 							</div>
 						</div>
 						<? if ($iter % 2 == 1 && $iter < $max): ?>
-							</div><div class="row-fluid">
+							</div><div class="row">
 						<? endif; ?>
 						<? $iter++; ?>
 					<? endforeach; ?>
@@ -87,7 +87,7 @@
 		@endif
 
 	</div>
-	<div class="span3">
+	<div class="col-xs-3">
 		@include('blog::sidebar')
 	</div>
 </div>

@@ -200,6 +200,7 @@ BoojQuestions.prototype = {
 	}
 };
 
+
 var BoojTeams = function () {
 	this.container = $('#teams-section');
 	this.currBio = null;
@@ -235,11 +236,9 @@ BoojTeams.prototype = {
 	},
 
 	closeBios: function () {
-		this.container.find('.team-bio-info').slideUp('fast', function() {
-			$(this).remove();
-		});
+		this.container.hide();
 	},
-
+	/*
 	renderBio: function (args) {
 		var j, output, temp, obj;
 		output = Mustache.render(this.template, args);
@@ -248,14 +247,24 @@ BoojTeams.prototype = {
 		args.row.after(obj);
 		obj.slideDown('fast');
 	}
+	*/
+	renderBio: function (args) {
+		var j, output, temp, obj;
+		output = Mustache.render(this.template, args);
+		temp = $('body').append(output);
+		obj = temp.find('.team-bio-info');
+		args.row.after(obj);
+		temp.modal('show');
+	}
 };
+
 
 $(function () {
 	var homScrollObj = new BoojScrollHomePage();
 	var jcarouselElem = $('#jcarousel1');
 	var jcarouselElem2 = $('#jcarousel2');
 	var questions = new BoojQuestions();
-	var teams = new BoojTeams();
+	//var teams = new BoojTeams();
 	
 	jcarouselElem.jcarousel({
 		animation: 'slow',

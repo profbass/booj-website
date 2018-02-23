@@ -5,11 +5,11 @@
 @endsection
 
 @section('content')
-<div class="row-fluid">
-	<div class="span3">
+<div class="row">
+	<div class="col-xs-3">
 		@include('blog::admin.sidenav')
 	</div>
-    <div class="span9">
+    <div class="col-xs-9">
         <h2>Edit Blog Post Photos "<?=$post->title;?></h2>
         <hr>
         <?=Form::open_for_files($controller_alias . '/save-photos/' . $post->id, null, array('class' => 'form-horizontal')); ?>
@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="form-actions">
-                    <button type="submit" name="submit" value="main-photo" class="btn btn-large btn-success">Change Main Image</button>
+                    <button type="submit" name="submit" value="main-photo" class="btn btn-default btn btn-default-large btn btn-default-success">Change Main Image</button>
                 </div>
 
                 <?=Form::token(); ?>
@@ -62,7 +62,7 @@
                 </div>
 
                 <div class="form-actions">
-                    <button type="submit" name="submit" value="small-photo" class="btn btn-large btn-success">Change Small Image</button>
+                    <button type="submit" name="submit" value="small-photo" class="btn btn-default btn btn-default-large btn btn-default-success">Change Small Image</button>
                 </div>
 
                 <?=Form::token(); ?>

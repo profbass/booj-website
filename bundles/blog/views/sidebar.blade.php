@@ -1,11 +1,11 @@
 
 <div class="fb-like-box" data-href="https://www.facebook.com/boojers" data-width="292" data-border_color="#f0f1f1" data-show-faces="true" data-stream="false" data-header="false"></div>
 
-<a class="btn btn-block btn-large btn-primary margin-bottom-30 lower" target="_blank" href="<?=$action_urls['twitter'];?>boojers" title="follow @boojers"><i class="bicon-twitter"></i> follow @boojers</a>
+<a class="btn btn-default btn btn-default-block btn btn-default-large btn btn-default-primary margin-bottom-30 lower" target="_blank" href="<?=$action_urls['twitter'];?>boojers" title="follow @boojers"><i class="glyphicon glyphicon-twitter"></i> follow @boojers</a>
 
-<a class="btn btn-block btn-large btn-primary margin-bottom-30 lower" href="http://feedburner.google.com/fb/a/mailverify?uri=Booj&amp;loc=en_US" target="_blank" title="Subscribe by email">Subscribe by Email</a>
+<a class="btn btn-default btn btn-default-block btn btn-default-large btn btn-default-primary margin-bottom-30 lower" href="http://feedburner.google.com/fb/a/mailverify?uri=Booj&amp;loc=en_US" target="_blank" title="Subscribe by email">Subscribe by Email</a>
 
-<a class="btn btn-block btn-large btn-primary lower" href="/contact-us" title="Contact Us">Contact Us</a>
+<a class="btn btn-default btn btn-default-block btn btn-default-large btn btn-default-primary lower" href="/contact-us" title="Contact Us">Contact Us</a>
 
 <hr>
 
@@ -52,7 +52,7 @@
 				</li>
 			<? endforeach; ?>
 		</ul>
-		<a class="btn margin-top-15 btn-block btn-large btn-primary lower" href="<?=$action_urls['author'];?>" title="View all our contributors">View all our contributors</a>
+		<a class="btn btn-default margin-top-15 btn btn-default-block btn btn-default-large btn btn-default-primary lower" href="<?=$action_urls['author'];?>" title="View all our contributors">View all our contributors</a>
 	</div> 
 
 @endif

@@ -21,19 +21,20 @@
         {{ Asset::styles() }}
         @yield('styles')
     </head>
+    dfkjghdjfkshgjkdhf
     <body class="normal-layout">
         <header class="site-header">
             <div class="container">
-                <div class="row-fluid">
-                    <div class="span8">
+                <div class="row">
+                    <div class="col-xs-8">
                         <div class="navbar">
-                            <div class="navbar-inner clearfix">
-                                <a href="/" class="brand"><img src="/img/booj-flame.png" alt="Booj Logo"></a>
-                                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <div class="navbar-header clearfix">
+                                <a href="/" class="navbar-brand"><img src="/img/booj-flame.png" alt="Booj Logo"></a>
+                                <button type="button" class="btn btn-default btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                                     Main Menu
                                 </button>
                                 <div class="nav-collapse">
-                                    <ul class="nav" id="js-menu">
+                                    <ul class="navbar-nav nav" id="js-menu">
                                         @if (isset($menu_items))
                                             @foreach ($menu_items as $menu_item)
                                                 @if (!in_array($menu_item->uri, array('/about', '/teams', '/clients', '/events')))
@@ -72,13 +73,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="span2 header-social-networks visible-desktop">
+                    <div class="col-xs-2 header-social-networks visible-desktop">
                         <a href="https://www.youtube.com/boojvideo" title="Booj YouTube Page" target="_blank"><i class="bicon-white-youtube">&nbsp;</i></a>
                         <a href="https://www.facebook.com/boojers" title="Booj Facebook Page" target="_blank"><i class="bicon-white-facebook">&nbsp;</i></a>
                         <a href="https://plus.google.com/107717391600262472445" title="Booj Google Plus Page" target="_blank"><i class="bicon-white-google-plus">&nbsp;</i></a>
                         <a href="http://www.twitter.com/boojers" title="Booj Twitter Page" target="_blank"><i class="bicon-white-twitter">&nbsp;</i></a>
                     </div>
-                    <div class="span2 header-contact visible-desktop">
+                    <div class="col-xs-2 header-contact visible-desktop">
                         <a href="/contact" title="Contact us">Contact Us</a>     
                     </div>
                 </div>

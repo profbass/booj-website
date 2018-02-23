@@ -21,8 +21,8 @@
 @endsection
 
 @section('content')
-<div class="row-fluid">
-    <div class="span12">
+<div class="row">
+    <div class="col-xs-12">
 
         <?php 
             $success_message = Session::get('success_message');
@@ -53,7 +53,7 @@
 				<div class="control-group{{ isset($errors) && $errors->has('password') ? ' error' : '' }}">
 					<?=Form::label('password', 'Password', array('class' => 'control-label')); ?>
 					<div class="controls">
-						<?=Form::text('password', Input::old('meta_title'), array('class' => 'span6', 'placeholder' => 'Enter Password'));?>
+						<?=Form::text('password', Input::old('meta_title'), array('class' => 'col-xs-6', 'placeholder' => 'Enter Password'));?>
 						@if ($errors && $errors->has('password'))
 							<span class="help-inline">This field is required</span>
 						@endif
@@ -61,7 +61,7 @@
 				</div>
 
 				<div class="form-actions">
-					<button type="submit" name="submit" value="1" class="btn btn-large btn-success">Login</button>
+					<button type="submit" name="submit" value="1" class="btn btn-default btn btn-default-large btn btn-default-success">Login</button>
 				</div>
 				
 				<?=Form::token(); ?>

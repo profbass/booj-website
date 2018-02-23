@@ -7,8 +7,8 @@
 
 @section('content')
 <div class="container">
-	<div class="row-fluid">
-	    <div class="span12">
+	<div class="row">
+	    <div class="col-xs-12">
 			<?php if (isset($messages)) echo '<h1>' . $messages[mt_rand(0, 2)] . '</h1>'; ?>
 
 			<h2>Server Error: 500 (Internal Server Error)</h2>

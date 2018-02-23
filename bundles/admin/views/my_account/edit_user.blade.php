@@ -9,11 +9,11 @@
 @endsection
 
 @section('content')	
-<div class="row-fluid">
-	<div class="span3">
+<div class="row">
+	<div class="col-xs-3">
 		@include('admin::my_account.sidenav')
 	</div>
-    <div class="span9">
+    <div class="col-xs-9">
     	<h2>Edit My Account</h2>
     	<hr>
 		<?php echo Form::open($controller_alias . '/update', null, array('class' => 'form-horizontal') ); ?>
@@ -24,7 +24,7 @@
 						<?php echo Form::label('first_name', 'First Name *', array('class' => 'control-label')); ?>
 						<div class="controls">
 							<?php
-								echo Form::text('first_name', Input::old('first_name') ? Input::old('first_name') : $user->first_name, array('class' => 'span6', 'required' => 'required', 'placeholder' => 'Enter First Name'));
+								echo Form::text('first_name', Input::old('first_name') ? Input::old('first_name') : $user->first_name, array('class' => 'col-xs-6', 'required' => 'required', 'placeholder' => 'Enter First Name'));
 							?>
 							@if ($errors && $errors->has('first_name'))
 								<span class="help-inline">This field is required</span>
@@ -38,7 +38,7 @@
 						<?php echo Form::label('last_name', 'Last Name *', array('class' => 'control-label')); ?>
 						<div class="controls">
 							<?php
-								echo Form::text('last_name', Input::old('last_name') ? Input::old('last_name') : $user->last_name, array('class' => 'span6', 'required' => 'required', 'placeholder' => 'Enter Last Name'));
+								echo Form::text('last_name', Input::old('last_name') ? Input::old('last_name') : $user->last_name, array('class' => 'col-xs-6', 'required' => 'required', 'placeholder' => 'Enter Last Name'));
 							?>
 							@if ($errors && $errors->has('last_name'))
 								<span class="help-inline">This field is required</span>
@@ -53,7 +53,7 @@
 						<?php echo Form::label('username', 'Username *', array('class' => 'control-label')); ?>
 						<div class="controls">
 							<?php
-								echo Form::text('username', Input::old('username') ? Input::old('username') : $user->username, array('class' => 'span6', 'required' => 'required', 'placeholder' => 'Enter Username'));
+								echo Form::text('username', Input::old('username') ? Input::old('username') : $user->username, array('class' => 'col-xs-6', 'required' => 'required', 'placeholder' => 'Enter Username'));
 							?>
 							@if ($errors && $errors->has('username'))
 								<span class="help-inline">This field is required</span>
@@ -67,7 +67,7 @@
 						<?php echo Form::label('email', 'Email *', array('class' => 'control-label')); ?>
 						<div class="controls">
 							<?php
-								echo Form::email('email', Input::old('email') ? Input::old('email') : $user->email, array('class' => 'span6', 'required' => 'required', 'placeholder' => 'Enter New Email Address'));
+								echo Form::email('email', Input::old('email') ? Input::old('email') : $user->email, array('class' => 'col-xs-6', 'required' => 'required', 'placeholder' => 'Enter New Email Address'));
 							?>
 							@if ($errors && $errors->has('email'))
 								<span class="help-inline">This field is required</span>
@@ -85,7 +85,7 @@
 								<div class="control-group">
 									<?=Form::label('user_metadata[' . $meta_name . ']', ucwords(str_replace('_', ' ', $meta_name)), array('class' => 'control-label')); ?>
 									<div class="controls">
-										<?=Form::textarea('user_metadata[' . $meta_name . ']', Input::old('user_metadata.' . $meta_name) ? Input::old('user_metadata.' . $meta_name) : $meta_value, array('class' => 'span12 ckeditor', 'style' => 'height: 200px;', 'placeholder' => 'Enter ' . ucwords(str_replace('_', ' ', $meta_name))));?>
+										<?=Form::textarea('user_metadata[' . $meta_name . ']', Input::old('user_metadata.' . $meta_name) ? Input::old('user_metadata.' . $meta_name) : $meta_value, array('class' => 'col-xs-12 ckeditor', 'style' => 'height: 200px;', 'placeholder' => 'Enter ' . ucwords(str_replace('_', ' ', $meta_name))));?>
 									</div>
 								</div>
 							</div>
@@ -99,7 +99,7 @@
 								<div class="control-group">
 									<?=Form::label('user_metadata[' . $meta_name . ']', ucwords(str_replace('_', ' ', $meta_name)), array('class' => 'control-label')); ?>
 									<div class="controls">
-										<?=Form::text('user_metadata[' . $meta_name . ']', Input::old('user_metadata.' . $meta_name) ? Input::old('user_metadata.' . $meta_name) : $meta_value, array('class' => 'span6', 'placeholder' => 'Enter ' . ucwords(str_replace('_', ' ', $meta_name))));?>
+										<?=Form::text('user_metadata[' . $meta_name . ']', Input::old('user_metadata.' . $meta_name) ? Input::old('user_metadata.' . $meta_name) : $meta_value, array('class' => 'col-xs-6', 'placeholder' => 'Enter ' . ucwords(str_replace('_', ' ', $meta_name))));?>
 									</div>
 								</div>
 							</div>
@@ -124,7 +124,7 @@
 				?>
 				
 				<div class="form-actions">
-					<button type="submit" name="submit" value="1" class="btn btn-success">Update</button>
+					<button type="submit" name="submit" value="1" class="btn btn-default btn btn-default-success">Update</button>
 				</div>
 				<?php echo Form::token(); ?>
 			</fieldset>

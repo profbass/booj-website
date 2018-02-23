@@ -5,13 +5,13 @@
 @endsection
 
 @section('content')
-<div class="row-fluid">
-	<div class="span3">
+<div class="row">
+	<div class="col-xs-3">
 		@include('blog::admin.sidenav')
 	</div>
-    <div class="span9">
+    <div class="col-xs-9">
         <h2>Blog Categories</h2>
-        <a href="<?=$controller_alias; ?>/create" class="btn btn-primary">Create New Category</a>
+        <a href="<?=$controller_alias; ?>/create" class="btn btn-default btn btn-default-primary">Create New Category</a>
         <hr>
 
     	<table class="table table-striped list-table">
@@ -30,10 +30,10 @@
 	    					<td><?=$category->title;?></td>
 	    					<td><?=date('m-d-Y', strtotime($category->created_at));?></td>
 	    					<td>
-								<div class="btn-toolbar">
-									<div class="btn-group">
-										<a href="<?=$controller_alias; ?>/edit/<?=$category->id; ?>" class="btn btn-mini btn-primary"><i class="icon-pencil icon-white"></i> Edit</a>
-                                        <a data-action="confirm" href="<?=$controller_alias; ?>/destroy/<?=$category->id; ?>" class="btn btn-mini btn-danger"><i class="icon-remove icon-white"></i> DELETE Page</a>
+								<div class="btn btn-default-toolbar">
+									<div class="btn btn-default-group">
+										<a href="<?=$controller_alias; ?>/edit/<?=$category->id; ?>" class="btn btn-default btn btn-default-mini btn btn-default-primary"><i class="glyphicon glyphicon-pencil glyphicon glyphicon-white"></i> Edit</a>
+                                        <a data-action="confirm" href="<?=$controller_alias; ?>/destroy/<?=$category->id; ?>" class="btn btn-default btn btn-default-mini btn btn-default-danger"><i class="glyphicon glyphicon-remove glyphicon glyphicon-white"></i> DELETE Page</a>
 									</div>
 								</div>
 	    					</td>

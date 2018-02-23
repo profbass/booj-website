@@ -5,12 +5,12 @@
 @endsection
 
 @section('content')	
-<div class="row-fluid">
-	<div class="span3">
+<div class="row">
+	<div class="col-xs-3">
 		@include('admin::users.sidenav')
 	</div>
-    <div class="span9">
-    	<a href="<?=$controller_alias;?>/create" class="btn pull-right btn-primary">Create User</a>
+    <div class="col-xs-9">
+    	<a href="<?=$controller_alias;?>/create" class="btn btn-default pull-right btn btn-default-primary">Create User</a>
      	<h2>Current Users</h2>
      	<hr>
      	<?php if(isset($users) && !empty($users)): ?>
@@ -51,19 +51,19 @@
 		     					?>
 		     				</td>
 		     				<td>
-								<div class="btn-toolbar">
-									<div class="btn-group">
-				     					<a href="<?=$controller_alias;?>/edit/<?=$user->id;?>" class="btn btn-mini"><i class="icon-edit"></i> Edit Info</a>
+								<div class="btn btn-default-toolbar">
+									<div class="btn btn-default-group">
+				     					<a href="<?=$controller_alias;?>/edit/<?=$user->id;?>" class="btn btn-default btn btn-default-mini"><i class="glyphicon glyphicon-edit"></i> Edit Info</a>
 				     					<?
 				     					if ($user->status == 1):
-				     						echo '<a href="' . $controller_alias . '/lock/' . $user->id .'" class="btn btn-warning btn-mini" data-action="confirm"><i class="icon-lock icon-white"></i> Lock</a>';
+				     						echo '<a href="' . $controller_alias . '/lock/' . $user->id .'" class="btn btn-default btn btn-default-warning btn btn-default-mini" data-action="confirm"><i class="glyphicon glyphicon-lock glyphicon glyphicon-white"></i> Lock</a>';
 				     					else:
-				     						echo '<a href="' . $controller_alias . '/unlock/' . $user->id .'" class="btn btn-success btn-mini" data-action="confirm"><i class="icon-ok icon-white"></i> Un-Lock</a>';
+				     						echo '<a href="' . $controller_alias . '/unlock/' . $user->id .'" class="btn btn-default btn btn-default-success btn btn-default-mini" data-action="confirm"><i class="glyphicon glyphicon-ok glyphicon glyphicon-white"></i> Un-Lock</a>';
 				     					endif;
 				     					?>
-				     					<a href="<?=$controller_alias;?>/reset_password/<?=$user->id;?>" class="btn btn-mini btn-info" data-action="confirm"><i class="icon-refresh"></i> Reset Password</a>
+				     					<a href="<?=$controller_alias;?>/reset_password/<?=$user->id;?>" class="btn btn-default btn btn-default-mini btn btn-default-info" data-action="confirm"><i class="glyphicon glyphicon-refresh"></i> Reset Password</a>
 
-				     					<a href="<?=$controller_alias;?>/destroy/<?=$user->id;?>" class="btn btn-danger btn-mini" data-action="confirm"><i class="icon-remove icon-white"></i> Delete</a>
+				     					<a href="<?=$controller_alias;?>/destroy/<?=$user->id;?>" class="btn btn-default btn btn-default-danger btn btn-default-mini" data-action="confirm"><i class="glyphicon glyphicon-remove glyphicon glyphicon-white"></i> Delete</a>
 		     						</div>
 		     					</div>
 		     				</td>

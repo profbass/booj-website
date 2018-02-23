@@ -19,12 +19,12 @@
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top" id="admin-header">
             <div class="navbar-inner">
-                <div class="container-fluid">
+                <div class="container">
                     <a href="/admin" class="brand"><img src="/bundles/admin/img/admin_logo.png" alt="Admin Logo"></a>
                 </div>
             </div>
         </nav>
-        <div class="container-fluid" id="admin-container">            
+        <div class="container" id="admin-container">            
             <?php 
                 $success_message = Session::get('success_message');
                 if ($success_message) {
@@ -44,8 +44,8 @@
                     }
                 }
             ?>
-			<div class="row-fluid">
-                <div class="span3" style="float:none; margin: 0 auto;">
+			<div class="row">
+                <div class="col-xs-3" style="float:none; margin: 0 auto;">
                     <h1>Reset Password</h1>
 
                     <?=Form::open(null, null, array('class' => 'form-horizontal', 'autocomplete' => 'off') ); ?>
@@ -65,7 +65,7 @@
                         </div>
 
                         <div class="control-group">
-                            <input type="submit" name="Reset" value="Reset Password" class="btn btn-primary btn-large">
+                            <input type="submit" name="Reset" value="Reset Password" class="btn btn-default btn btn-default-primary btn btn-default-large">
                         </div>
 
                         <?php echo Form::token(); ?>

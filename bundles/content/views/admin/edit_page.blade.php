@@ -5,11 +5,11 @@
 @endsection
 
 @section('content')	
-<div class="row-fluid">
-	<div class="span3">
+<div class="row">
+	<div class="col-xs-3">
 		@include('content::admin.sidenav')
 	</div>
-    <div class="span9">
+    <div class="col-xs-9">
      	<h2>Editing "<?=$page->pretty_name; ?>" Information</h2>
 
 		<ul class="nav nav-tabs">
@@ -31,7 +31,7 @@
 					<div class="control-group">
 						<label class="control-label">Content Section</label>
 						<div class="controls">
-							<a href="<?=$controller_alias;?>/edit_content/<?=$page->id; ?>/<?=$page->cmspage->id; ?>" class="btn">Edit the Content Section of This Page</a>
+							<a href="<?=$controller_alias;?>/edit_content/<?=$page->id; ?>/<?=$page->cmspage->id; ?>" class="btn btn-default">Edit the Content Section of This Page</a>
 						</div>
 					</div>
 				<?php endif; ?>
@@ -42,7 +42,7 @@
 					<div class="control-group{{ isset($errors) && $errors->has('pretty_name') ? ' error' : '' }}">
 						<?=Form::label('pretty_name', 'Page Name *', array('class' => 'control-label')); ?>
 						<div class="controls">
-							<?=Form::text('pretty_name', Input::old('pretty_name') ? Input::old('pretty_name') : $page->pretty_name, array('class' => 'span6', 'required' => 'required', 'placeholder' => 'Enter Page Name'));?>
+							<?=Form::text('pretty_name', Input::old('pretty_name') ? Input::old('pretty_name') : $page->pretty_name, array('class' => 'col-xs-6', 'required' => 'required', 'placeholder' => 'Enter Page Name'));?>
 							@if ($errors && $errors->has('pretty_name'))
 								<span class="help-inline">This field is required</span>
 							@endif
@@ -68,7 +68,7 @@
 					<div class="control-group{{ isset($errors) && $errors->has('uri') ? ' error' : '' }}">
 						<?=Form::label('uri', 'Page Link *', array('class' => 'control-label')); ?>
 						<div class="controls">
-							<?=Form::url('uri', Input::old('uri') ? Input::old('uri') : $page->uri, array('class' => 'span6', 'required' => 'required', 'placeholder' => 'Enter Page Link URL'));?>
+							<?=Form::url('uri', Input::old('uri') ? Input::old('uri') : $page->uri, array('class' => 'col-xs-6', 'required' => 'required', 'placeholder' => 'Enter Page Link URL'));?>
 							@if ($errors && $errors->has('uri'))
 								<span class="help-inline">This field is required</span>
 							@endif
@@ -79,7 +79,7 @@
 				<div class="control-group{{ isset($errors) && $errors->has('meta_title') ? ' error' : '' }}">
 					<?=Form::label('meta_title', 'Page Title', array('class' => 'control-label')); ?>
 					<div class="controls">
-						<?=Form::text('meta_title', Input::old('meta_title') ? Input::old('meta_title') : $page->meta_title, array('class' => 'span6', 'placeholder' => 'Enter Page Title'));?>
+						<?=Form::text('meta_title', Input::old('meta_title') ? Input::old('meta_title') : $page->meta_title, array('class' => 'col-xs-6', 'placeholder' => 'Enter Page Title'));?>
 						<span class="help-inline"><span class="label label-info">SEO</span></span>
 						@if ($errors && $errors->has('meta_title'))
 							<span class="help-inline">This field is required</span>
@@ -90,7 +90,7 @@
 				<div class="control-group{{ isset($errors) && $errors->has('meta_keyword') ? ' error' : '' }}">
 					<?=Form::label('meta_keyword', 'Page Keywords', array('class' => 'control-label')); ?>
 					<div class="controls">
-						<?=Form::textarea('meta_keyword', Input::old('meta_keyword') ? Input::old('meta_keyword') : $page->meta_keyword, array('class' => 'span6', 'placeholder' => 'Enter Page Keywords')); ?>
+						<?=Form::textarea('meta_keyword', Input::old('meta_keyword') ? Input::old('meta_keyword') : $page->meta_keyword, array('class' => 'col-xs-6', 'placeholder' => 'Enter Page Keywords')); ?>
 						<span class="help-inline"><span class="label label-info">SEO</span></span>
 						@if ($errors && $errors->has('meta_keyword'))
 							<span class="help-block">This field is required</span>
@@ -101,7 +101,7 @@
 				<div class="control-group{{ isset($errors) && $errors->has('meta_description') ? ' error' : '' }}">
 					<?=Form::label('meta_description', 'Page Description', array('class' => 'control-label')); ?>
 					<div class="controls">
-						<?= Form::textarea('meta_description', Input::old('meta_description') ? Input::old('meta_description') : $page->meta_description, array('class' => 'span6', 'placeholder' => 'Enter Page Description'));?>
+						<?= Form::textarea('meta_description', Input::old('meta_description') ? Input::old('meta_description') : $page->meta_description, array('class' => 'col-xs-6', 'placeholder' => 'Enter Page Description'));?>
 						<span class="help-inline"><span class="label label-info">SEO</span></span>
 						@if ($errors && $errors->has('meta_description'))
 							<span class="help-block">This field is required</span>
@@ -127,7 +127,7 @@
 				<div class="control-group{{ isset($errors) && $errors->has('password') ? ' error' : '' }}">
 					<?=Form::label('password', 'Password', array('class' => 'control-label')); ?>
 					<div class="controls">
-						<?=Form::text('password', Input::old('password') ? Input::old('password') : $page->password, array('class' => 'span6', 'placeholder' => 'Enter Password'));?>
+						<?=Form::text('password', Input::old('password') ? Input::old('password') : $page->password, array('class' => 'col-xs-6', 'placeholder' => 'Enter Password'));?>
 						<span class="help-inline"><span class="label label-info">Security</span></span>
 						@if ($errors && $errors->has('password'))
 							<span class="help-inline">This field is required</span>
@@ -136,7 +136,7 @@
 				</div>
 
 				<div class="form-actions">
-					<button type="submit" name="submit" value="1" class="btn btn-large btn-success">Save Changes</button>
+					<button type="submit" name="submit" value="1" class="btn btn-default btn btn-default-large btn btn-default-success">Save Changes</button>
 				</div>
 				
 				<?=Form::token(); ?>

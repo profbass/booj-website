@@ -18,16 +18,16 @@
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top" id="admin-header">
-            <div class="navbar-inner">
-                <div class="container-fluid">
+            <div class="navbar-header">
+                <div class="container">
                     <a href="/admin" class="brand"><img src="/bundles/admin/img/admin_logo.png" alt="Admin Logo"></a>
-                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+                    <button type="button" class="btn btn-default btn btn-default-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="glyphicon glyphicon-bar"></span>
+                        <span class="glyphicon glyphicon-bar"></span>
+                        <span class="glyphicon glyphicon-bar"></span>
                     </button>
-                    <div class="nav-collapse">
-                        <ul class="nav">
+                    <div class="nav-collapse collapse">
+                        <ul class="nav navbar-nav">
                             @if (!empty($main_admin_nav))
                                 @foreach($main_admin_nav as $menu_name => $menu_uri)
                                     <li<? if ($current_uri == $menu_uri) echo ' class="active"'; ?>><a href="<?=$menu_uri;?>"><?=$menu_name;?></a></li>
@@ -39,7 +39,7 @@
                 </div>
             </div>
         </nav>
-        <div class="container-fluid" id="admin-container">            
+        <div class="container" id="admin-container">            
             <?php 
                 $success_message = Session::get('success_message');
                 if ($success_message) {
